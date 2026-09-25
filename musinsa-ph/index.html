@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Porma PH: a Musinsa-style fashion marketplace concept for the Philippines. Rankings, payday sale, local brands, Snap community and magazine.">
+<meta name="description" content="Porma PH: a Musinsa-style fashion marketplace concept for the Philippines. Musinsa top 10 brands, Tokyo street labels, live rankings, payday sale, Snap community and magazine.">
 <title>Porma PH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,12 +187,16 @@ img,svg{max-width:100%}
 @media (min-width:600px){.brands{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:900px){.brands{grid-template-columns:repeat(5,1fr)}}
 .bcard{border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.mark{height:60px;display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:4px;font-size:20px;font-weight:900;letter-spacing:-.01em;overflow:hidden;padding:0 8px;white-space:nowrap}
+.mark{position:relative;height:60px;display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:4px;font-size:20px;font-weight:900;letter-spacing:-.01em;overflow:hidden;padding:0 8px;white-space:nowrap}
 .mark.wide{font-stretch:125%;letter-spacing:.08em;font-size:17px}
 .mark.narrow{font-stretch:68%;font-size:30px;letter-spacing:.01em}
 .mark.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:30px;letter-spacing:0}
 .mark.mono{font-stretch:88%;font-weight:600;font-size:15px;letter-spacing:.2em;text-transform:uppercase}
-.mark.box{background:var(--ink);color:var(--paper);font-stretch:110%;font-size:16px;letter-spacing:.04em}
+.mark.box{background:var(--ink);color:var(--paper);font-stretch:110%;font-size:15px;letter-spacing:.04em}
+.mark.stack{white-space:normal;line-height:1.1;font-size:13px;text-align:center;padding-inline:26px}
+.mark .rank{width:26px;height:26px;font-size:12px;border-bottom-right-radius:4px}
+.mark.box .rank{background:var(--paper);color:var(--ink)}
+.bcard p .tag{margin-right:2px}
 .bcard h3{font-size:14px;font-weight:800}
 .bcard p{font-size:12px;color:var(--muted);margin-top:2px}
 .follow{border:1px solid var(--ink);border-radius:4px;padding:7px 0;font-weight:700;font-size:12px;text-align:center;margin-top:auto}
@@ -271,6 +275,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
   <symbol id="s-tank" viewBox="0 0 100 100"><path fill="currentColor" d="M28 6 L38 6 C40 24 60 24 62 6 L72 6 C62 18 62 34 74 46 L70 52 L70 92 L30 92 L30 52 L26 46 C38 34 38 18 28 6 Z"/></symbol>
   <symbol id="s-shirt" viewBox="0 0 100 100"><path fill="currentColor" d="M30 18 L42 12 L50 24 L58 12 L70 18 L90 34 L84 48 L70 44 L70 92 L30 92 L30 44 L16 48 L10 34 Z"/><path fill="rgba(0,0,0,.16)" d="M42 12 L50 24 L44 33 L35 20 Z M58 12 L50 24 L56 33 L65 20 Z"/><g fill="rgba(0,0,0,.28)"><circle cx="50" cy="42" r="1.7"/><circle cx="50" cy="54" r="1.7"/><circle cx="50" cy="66" r="1.7"/><circle cx="50" cy="78" r="1.7"/></g></symbol>
   <symbol id="s-hoodie" viewBox="0 0 100 100"><path fill="currentColor" d="M32 20 L40 12 C42 4 58 4 60 12 L68 20 L92 40 L86 78 L70 74 L70 92 L30 92 L30 74 L14 78 L8 40 Z"/><path fill="rgba(0,0,0,.16)" d="M40 12 C42 4 58 4 60 12 C58 24 42 24 40 12 Z"/><rect fill="rgba(0,0,0,.14)" x="36" y="66" width="28" height="18" rx="3"/><path stroke="rgba(0,0,0,.25)" stroke-width="1.6" fill="none" d="M46 24 L47 42 M54 24 L53 42"/></symbol>
+  <symbol id="s-sweat" viewBox="0 0 100 100"><path fill="currentColor" d="M30 18 L42 12 C44 19 56 19 58 12 L70 18 L92 38 L86 78 L70 74 L70 92 L30 92 L30 74 L14 78 L8 38 Z"/><path fill="rgba(0,0,0,.16)" d="M42 12 C44 19 56 19 58 12 L61 13.5 C58 23 42 23 39 13.5 Z"/><rect fill="rgba(0,0,0,.12)" x="30" y="84" width="40" height="8"/></symbol>
   <symbol id="s-jacket" viewBox="0 0 100 100"><path fill="currentColor" d="M30 18 L42 12 L50 20 L58 12 L70 18 L92 36 L86 72 L70 68 L70 92 L30 92 L30 68 L14 72 L8 36 Z"/><path fill="rgba(0,0,0,.16)" d="M42 12 L50 20 L58 12 L55 30 L50 26 L45 30 Z"/><rect fill="rgba(0,0,0,.24)" x="49" y="24" width="2" height="64"/><rect fill="rgba(0,0,0,.12)" x="34" y="64" width="11" height="12" rx="2"/><rect fill="rgba(0,0,0,.12)" x="55" y="64" width="11" height="12" rx="2"/></symbol>
   <symbol id="s-pants" viewBox="0 0 100 100"><path fill="currentColor" d="M28 8 L72 8 L76 92 L56 92 L50 44 L44 92 L24 92 Z"/><rect fill="rgba(0,0,0,.16)" x="28" y="8" width="44" height="5"/><path stroke="rgba(0,0,0,.14)" stroke-width="1.4" fill="none" d="M36 13 L33 92 M64 13 L67 92"/></symbol>
   <symbol id="s-shorts" viewBox="0 0 100 100"><path fill="currentColor" d="M28 24 L72 24 L76 76 L56 76 L50 56 L44 76 L24 76 Z"/><rect fill="rgba(0,0,0,.16)" x="28" y="24" width="44" height="5"/><path stroke="rgba(0,0,0,.18)" stroke-width="1.4" fill="none" d="M27 44 C31 40 36 40 40 44 M73 44 C69 40 64 40 60 44"/></symbol>
@@ -319,7 +324,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
       <a class="tab" href="#new">New</a>
       <a class="tab" href="#snap">Snap</a>
       <a class="tab" href="#magazine">Magazine</a>
-      <a class="tab" href="#sale">Outlet</a>
+      <a class="tab" href="#tokyo">Tokyo street</a>
       <a class="tab" href="#new">Beauty</a>
       <a class="tab" href="#new">Sports</a>
       <a class="tab" href="#new">Kids</a>
@@ -345,10 +350,10 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
         <a class="cta" href="#new">See the edit <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
       </div>
       <div class="slide s3" role="group" aria-label="3 of 3">
-        <div class="big" aria-hidden="true">PH</div>
-        <div class="eyebrow">Local Brands Week</div>
-        <h2>Made in Manila, Cebu &amp; Davao</h2>
-        <p>120 homegrown labels, one checkout. Free returns on every local brand order this week.</p>
+        <div class="big" aria-hidden="true">×</div>
+        <div class="eyebrow">Seoul × Tokyo</div>
+        <h2>Musinsa's top 10 meets Ura-Harajuku</h2>
+        <p>Musinsa's best-selling brands and Tokyo's street legends, one checkout. Duties included, delivered in 5–7 days.</p>
         <a class="cta" href="#brands">Meet the brands <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
       </div>
     </div>
@@ -409,10 +414,18 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
 
   <section class="sec" id="brands">
     <div class="sec-h">
-      <div><h2>Local brands week</h2><p>Homegrown labels from Manila, Cebu, Davao and Baguio</p></div>
-      <a class="more" href="#brands">All 120 brands <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+      <div><h2>Musinsa Top 10</h2><p>Musinsa's monthly TOP brand ranking, 2026 · Seoul to Manila in 5–7 days</p></div>
+      <a class="more" href="#brands">Full ranking <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
     </div>
     <div class="brands" id="brandGrid"></div>
+  </section>
+
+  <section class="sec" id="tokyo">
+    <div class="sec-h">
+      <div><h2>Tokyo street</h2><p>Japanese street labels, from Ura-Harajuku to Okayama denim · duties included</p></div>
+      <a class="more" href="#tokyo">All Japan brands <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="brands" id="jpGrid"></div>
   </section>
 
   <section class="sec" id="new">
@@ -450,10 +463,10 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
         <p>Where the resellers, the restorers and the ₱900 slides all meet.</p>
       </a>
       <a class="story m3" href="#magazine">
-        <svg class="art" viewBox="0 0 100 100" aria-hidden="true" style="color:#fff"><use href="#s-tote"/></svg>
-        <div class="kicker">Craft</div>
-        <h3>Handloom, from Ilocos to your tote</h3>
-        <p>Inside the weaving co-ops turning inabel into everyday bags.</p>
+        <svg class="art" viewBox="0 0 100 100" aria-hidden="true" style="color:#fff"><use href="#s-hoodie"/></svg>
+        <div class="kicker">Primer</div>
+        <h3>Ura-Harajuku, explained</h3>
+        <p>BAPE, Undercover and Neighborhood came out of the same Tokyo backstreets. The short history, and what to buy first.</p>
       </a>
     </div>
   </section>
@@ -512,73 +525,85 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
 (function(){
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const peso=n=>'₱'+n.toLocaleString('en-PH');
-  const fmtK=n=>n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n);
+  const fmtK=n=>n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n);
   const store={get(k,d){try{const v=localStorage.getItem('porma:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('porma:'+k,JSON.stringify(v))}catch(e){}}};
   const liked=new Set(store.get('liked',[])), bag=store.get('bag',[]), follows=new Set(store.get('follows',[]));
 
   /* ---------- data (illustrative) ---------- */
   const RANK=[
-    {id:1,b:'Kalye Supply',n:'Oversized boxy tee "Manila"',p:790,w:1190,c:'#2a2723',s:'tee',cat:'men',d:0,l:4210,t:['COD','Free ship']},
-    {id:2,b:'Islas',n:'Linen camp-collar shirt, sand',p:1490,w:2190,c:'#d9c39a',s:'shirt',cat:'men',d:1,l:3880,t:['COD']},
-    {id:3,b:'Tsinelas Club',n:'Recycled rubber slides, marine',p:890,w:0,c:'#1f5f8b',s:'slides',cat:'shoes',d:'new',l:5120,t:['Free ship','GCash 5%']},
-    {id:4,b:'Habi Studio',n:'Inabel stripe tote, indigo',p:1250,w:0,c:'#2c3e8a',s:'tote',cat:'bags',d:0,l:2960,t:['Local']},
-    {id:5,b:'Bagyo Co.',n:'Packable rain shell 2.0',p:2390,w:3490,c:'#f0c419',s:'jacket',cat:'men',d:3,l:6040,t:['COD','Free ship']},
-    {id:6,b:'Sinag',n:'Ribbed tank, cream',p:490,w:0,c:'#efe3cf',s:'tank',cat:'women',d:-2,l:2210,t:['3 for ₱1,200']},
-    {id:7,b:'Baryo Denim',n:'Wide-leg jeans, mid wash',p:1890,w:2590,c:'#6f8fb0',s:'pants',cat:'women',d:1,l:3350,t:['COD']},
-    {id:8,b:'Lakbay',n:'Trail runner "Taal"',p:3990,w:4990,c:'#3f7a3a',s:'sneaker',cat:'shoes',d:-1,l:4470,t:['Free ship']},
-    {id:9,b:'Mahal',n:'Satin slip dress, rose',p:1690,w:0,c:'#c86b7e',s:'dress',cat:'women',d:'new',l:1980,t:['Local']},
-    {id:10,b:'Tahanan',n:'Corduroy bucket hat, walnut',p:690,w:0,c:'#8d5a3b',s:'bucket',cat:'bags',d:0,l:1720,t:['COD']},
-    {id:11,b:'Kalye Supply',n:'Heavyweight hoodie, charcoal',p:1590,w:1990,c:'#4a4a4a',s:'hoodie',cat:'men',d:2,l:2890,t:['COD']},
-    {id:12,b:'Lakbay',n:'Court sneaker, off-white',p:2990,w:0,c:'#e8e2d6',s:'sneaker',cat:'shoes',d:0,l:2650,t:['Free ship']},
-    {id:13,b:'Islas',n:'Drawstring linen shorts',p:990,w:1390,c:'#b9a58a',s:'shorts',cat:'men',d:-1,l:2100,t:['COD']},
-    {id:14,b:'Sinag',n:'Sling bag, tangerine',p:850,w:0,c:'#e8702a',s:'sling',cat:'bags',d:'new',l:1560,t:['GCash 5%']},
-    {id:15,b:'Mahal',n:'Puff-sleeve mini dress, black',p:1490,w:1990,c:'#1a1a1a',s:'dress',cat:'women',d:1,l:1890,t:['COD']},
-    {id:16,b:'Tsinelas Club',n:'Strappy sandals, tan',p:1190,w:0,c:'#b47a4a',s:'slides',cat:'shoes',d:2,l:1430,t:['Local']},
-    {id:17,b:'Tahanan',n:'Six-panel cap, olive',p:590,w:790,c:'#5c6b3a',s:'cap',cat:'bags',d:-2,l:1320,t:['COD']},
-    {id:18,b:'Baryo Denim',n:'Denim overshirt, dark wash',p:2190,w:0,c:'#3d5a80',s:'jacket',cat:'women',d:0,l:1210,t:['Free ship']}
+    {id:1,b:'Musinsa Standard',n:'Relaxed-fit heavyweight tee, black',p:890,w:0,c:'#1c1c1c',s:'tee',cat:'men',d:0,l:8120,t:['COD','Free ship']},
+    {id:2,b:'Adidas',n:'Samba OG, black/white',p:5500,w:0,c:'#1e1e1e',s:'sneaker',cat:'shoes',d:0,l:7350,t:['Free ship']},
+    {id:3,b:'Musinsa Standard Woman',n:'Linen-blend wide slacks, beige',p:1690,w:0,c:'#cdbb98',s:'pants',cat:'women',d:1,l:5240,t:['COD','Free ship']},
+    {id:4,b:'Nike',n:'Court Vision Low, white',p:3795,w:4295,c:'#f0ede6',s:'sneaker',cat:'shoes',d:-1,l:6890,t:['Free ship']},
+    {id:5,b:'Puma',n:'Speedcat OG, red',p:5295,w:5995,c:'#b8322a',s:'sneaker',cat:'shoes',d:'new',l:4470,t:['Free ship']},
+    {id:6,b:'New Balance',n:'530, white/silver',p:5590,w:0,c:'#e6e4de',s:'sneaker',cat:'shoes',d:0,l:6120,t:['Free ship']},
+    {id:7,b:'Dimitri Black',n:'Oversized logo hoodie, charcoal',p:2490,w:3190,c:'#4a4a4a',s:'hoodie',cat:'men',d:2,l:3120,t:['COD']},
+    {id:8,b:'Travel',n:'Pin-tuck wide pants, black',p:2990,w:3490,c:'#1f1f1f',s:'pants',cat:'men',d:1,l:2650,t:['COD']},
+    {id:9,b:'Drawfit',n:'Semi-wide chino, khaki',p:2390,w:0,c:'#7a7a58',s:'pants',cat:'men',d:-2,l:2210,t:['COD']},
+    {id:10,b:'SPAO',n:'Cool-tech oversized shirt, sky',p:1290,w:1690,c:'#bcd4e6',s:'shirt',cat:'women',d:'new',l:1980,t:['COD','Free ship']},
+    {id:11,b:'Musinsa Standard',n:'Boxy linen shirt, sand',p:1490,w:0,c:'#d9c39a',s:'shirt',cat:'men',d:1,l:3890,t:['COD']},
+    {id:12,b:'Adidas',n:'Firebird track jacket, navy',p:4800,w:5600,c:'#1e2a4a',s:'jacket',cat:'women',d:0,l:2980,t:['Free ship']},
+    {id:13,b:'Nike',n:'Heritage crossbody, black',p:1795,w:0,c:'#222222',s:'sling',cat:'bags',d:2,l:1630,t:['Free ship']},
+    {id:14,b:'Musinsa Standard Woman',n:'Ribbed tank, cream',p:590,w:0,c:'#efe3cf',s:'tank',cat:'women',d:'new',l:2540,t:['3 for ₱1,500']},
+    {id:15,b:'New Balance',n:'Logo 6-panel cap, navy',p:1390,w:0,c:'#1e2a4a',s:'cap',cat:'bags',d:-1,l:1270,t:['Free ship']},
+    {id:16,b:'Puma',n:'Logo bucket hat, black',p:1290,w:1590,c:'#1a1a1a',s:'bucket',cat:'bags',d:0,l:980,t:['COD']},
+    {id:17,b:'Dimitri Black',n:'Nylon sling bag, black',p:1590,w:0,c:'#111111',s:'sling',cat:'bags',d:-2,l:1450,t:['COD']},
+    {id:18,b:'Travel',n:'Loose-fit denim, mid blue',p:3290,w:3990,c:'#5d7fa6',s:'pants',cat:'women',d:1,l:1860,t:['COD']}
   ];
   const SALE=[
-    {id:21,b:'Bagyo Co.',n:'Storm parka, navy',p:2990,w:5990,c:'#1e2a4a',s:'jacket',t:['COD']},
-    {id:22,b:'Lakbay',n:'Runner "Mayon", lava red',p:2490,w:4990,c:'#c0392b',s:'sneaker',t:['Free ship']},
-    {id:23,b:'Kalye Supply',n:'Logo hoodie, sand',p:990,w:1990,c:'#cbb897',s:'hoodie',t:['COD']},
-    {id:24,b:'Mahal',n:'Wrap midi dress, teal',p:1190,w:2790,c:'#1f7a7a',s:'dress',t:['GCash 5%']},
-    {id:25,b:'Baryo Denim',n:'Carpenter pants, black',p:1290,w:2590,c:'#232323',s:'pants',t:['COD']},
-    {id:26,b:'Sinag',n:'Oval sunglasses, smoke',p:390,w:990,c:'#2b2b2b',s:'shades',t:['Free ship']}
+    {id:21,b:'BAPE',n:'Shark full-zip hoodie, camo green',p:21990,w:29990,c:'#4b5b3a',s:'hoodie',t:['Free ship','Duties incl.']},
+    {id:22,b:'Human Made',n:'Heart logo tee, white',p:4490,w:5990,c:'#f5f2ea',s:'tee',t:['Free ship']},
+    {id:23,b:'Neighborhood',n:'Souvenir jacket, black',p:12990,w:19990,c:'#1b1b1b',s:'jacket',t:['Free ship','Duties incl.']},
+    {id:24,b:'Musinsa Standard',n:'Fleece half-zip, navy',p:1490,w:2490,c:'#1f2b4a',s:'sweat',t:['COD']},
+    {id:25,b:'WTAPS',n:'Cargo trousers, olive',p:9990,w:15990,c:'#4f5a3c',s:'pants',t:['Free ship']},
+    {id:26,b:'Cav Empt',n:'Graphic tee, black',p:4990,w:7990,c:'#111111',s:'tee',t:['Free ship']}
   ];
   const NEW=[
-    {id:31,b:'Habi Studio',n:'Inabel crossbody, rust',p:1450,w:0,c:'#b04a2a',s:'sling',t:['New','Local']},
-    {id:32,b:'Islas',n:'Piña-blend boxy shirt, ecru',p:2490,w:0,c:'#f1ead8',s:'shirt',t:['New']},
-    {id:33,b:'Kalye Supply',n:'Pocket tee, forest',p:690,w:0,c:'#2f5d3a',s:'tee',t:['New','COD']},
-    {id:34,b:'Lakbay',n:'Water sandal "Siargao"',p:1690,w:0,c:'#111111',s:'slides',t:['New']},
-    {id:35,b:'Baryo Denim',n:'Barrel-leg jeans, raw indigo',p:2290,w:0,c:'#2c3e63',s:'pants',t:['New']},
-    {id:36,b:'Tahanan',n:'Bucket hat, mango gingham',p:790,w:0,c:'#d9a441',s:'bucket',t:['New','COD']},
-    {id:37,b:'Sinag',n:'Ribbed tank, sunset',p:490,w:0,c:'#f08a3c',s:'tank',t:['New']},
-    {id:38,b:'Mahal',n:'Slip dress, sage',p:1690,w:0,c:'#9fb59a',s:'dress',t:['New']},
-    {id:39,b:'Bagyo Co.',n:'Ripstop shorts, stone',p:1190,w:0,c:'#a89f91',s:'shorts',t:['New','COD']},
-    {id:40,b:'Sinag',n:'Mango butter lip balm',p:190,w:0,c:'#f5c542',s:'bottle',t:['New','Beauty']}
+    {id:31,b:'Kapital',n:'Bandana patchwork bucket hat',p:7990,w:0,c:'#7a2e2e',s:'bucket',t:['New','Tokyo drop']},
+    {id:32,b:'Undercover',n:'Graphic crewneck, black',p:8990,w:0,c:'#161616',s:'sweat',t:['New','Tokyo drop']},
+    {id:33,b:'Wacko Maria',n:'Hawaiian open-collar shirt, leopard',p:14990,w:0,c:'#a8763a',s:'shirt',t:['New','Tokyo drop']},
+    {id:34,b:'Visvim',n:'Christo sandal, black',p:22990,w:0,c:'#222222',s:'slides',t:['New','Tokyo drop']},
+    {id:35,b:'Needles',n:'Narrow track pant, purple',p:12990,w:0,c:'#5a3d7a',s:'pants',t:['New','Tokyo drop']},
+    {id:36,b:'Human Made',n:'Dry Alls cap, navy',p:5490,w:0,c:'#1e2a4a',s:'cap',t:['New','Tokyo drop']},
+    {id:37,b:'SPAO',n:'Cool-tech tee, white',p:690,w:0,c:'#f4f1ea',s:'tee',t:['New','COD']},
+    {id:38,b:'Drawfit',n:'Nylon shorts, black',p:1590,w:0,c:'#1a1a1a',s:'shorts',t:['New','COD']},
+    {id:39,b:'Adidas',n:'Gazelle Indoor, red',p:5800,w:0,c:'#b8322a',s:'sneaker',t:['New']},
+    {id:40,b:'Neighborhood',n:'Logo tote, black',p:3990,w:0,c:'#1b1b1b',s:'tote',t:['New','Tokyo drop']}
   ];
   const ALL=[...RANK,...SALE,...NEW];
   const BRANDS=[
-    {name:'Kalye Supply',cls:'narrow',mark:'KALYE',line:'Streetwear · Quezon City',f:48200},
-    {name:'Islas',cls:'wide',mark:'ISLAS',line:'Resort & linen · Cebu',f:31500},
-    {name:'Habi Studio',cls:'serif',mark:'Habi',line:'Handloom bags · Vigan',f:12900},
-    {name:'Bagyo Co.',cls:'box',mark:'BAGYO CO.',line:'Technical outerwear · Baguio',f:27800},
-    {name:'Sinag',cls:'mono',mark:'Sinag',line:'Basics & beauty · Makati',f:55100},
-    {name:'Baryo Denim',cls:'narrow',mark:'BARYO',line:'Denim · Marikina',f:22400},
-    {name:'Lakbay',cls:'wide',mark:'LAKBAY',line:'Footwear · Davao',f:39700},
-    {name:'Mahal',cls:'serif',mark:'Mahal',line:'Dresses · Pasig',f:18300},
-    {name:'Tsinelas Club',cls:'box',mark:'TSINELAS CLUB',line:'Slides & sandals · Iloilo',f:33000},
-    {name:'Tahanan',cls:'mono',mark:'Tahanan',line:'Hats & home · Taguig',f:9600}
+    {name:'Musinsa Standard',cls:'mono stack',mark:'MUSINSA STANDARD',o:'KR',line:'Basics · Seoul',f:1420000,rank:1},
+    {name:'Adidas',cls:'narrow',mark:'adidas',o:'DE',line:'Sportswear · Herzogenaurach',f:1810000,rank:2},
+    {name:'Musinsa Standard Woman',cls:'mono stack',mark:'MUSINSA STANDARD WOMAN',o:'KR',line:'Womenswear basics · Seoul',f:760000,rank:3},
+    {name:'Nike',cls:'box',mark:'NIKE',o:'US',line:'Sportswear · Beaverton',f:2100000,rank:4},
+    {name:'Puma',cls:'wide',mark:'PUMA',o:'DE',line:'Sportswear · Herzogenaurach',f:640000,rank:5},
+    {name:'New Balance',cls:'mono',mark:'new balance',o:'US',line:'Footwear · Boston',f:1230000,rank:6},
+    {name:'Dimitri Black',cls:'box',mark:'DIMITRI BLACK',o:'KR',line:'Streetwear · Seoul',f:410000,rank:7},
+    {name:'Travel',cls:'serif',mark:'Travel',o:'KR',line:'Minimal casual · Seoul',f:380000,rank:8},
+    {name:'Drawfit',cls:'narrow',mark:'DRAWFIT',o:'KR',line:'Casual · Seoul',f:520000,rank:9},
+    {name:'SPAO',cls:'wide',mark:'SPAO',o:'KR',line:'SPA · Seoul',f:690000,rank:10}
+  ];
+  const JP=[
+    {name:'BAPE',cls:'box',mark:'A BATHING APE',o:'JP',line:'Ura-Harajuku · since 1993',f:890000},
+    {name:'Human Made',cls:'mono',mark:'HUMAN MADE',o:'JP',line:'By NIGO · Tokyo',f:640000},
+    {name:'Neighborhood',cls:'mono',mark:'NEIGHBORHOOD',o:'JP',line:'Moto & workwear · Harajuku',f:410000},
+    {name:'WTAPS',cls:'box',mark:'WTAPS',o:'JP',line:'Military-inspired · Tokyo',f:380000},
+    {name:'Undercover',cls:'narrow',mark:'UNDERCOVER',o:'JP',line:'Jun Takahashi · Tokyo',f:350000},
+    {name:'Kapital',cls:'serif',mark:'Kapital',o:'JP',line:'Denim & boro · Okayama',f:290000},
+    {name:'Wacko Maria',cls:'mono',mark:'WACKO MARIA',o:'JP',line:'Guilty Parties · Tokyo',f:260000},
+    {name:'Cav Empt',cls:'mono',mark:'C.E',o:'JP',line:'Graphics & tech · Tokyo',f:210000},
+    {name:'Visvim',cls:'narrow',mark:'visvim',o:'JP',line:'Hiroki Nakamura · Tokyo',f:240000},
+    {name:'Needles',cls:'serif',mark:'Needles',o:'JP',line:'Nepenthes · Tokyo',f:230000}
   ];
   const SNAPS=[
-    {u:'jm.laurel',city:'BGC',ago:'2h',bg:'#e9dcc7',av:'#2a2723',top:['tee','#2a2723'],bot:['pants','#6f8fb0'],sh:['sneaker','#e8e2d6'],l:1284,w:['Kalye Supply','Baryo Denim','Lakbay']},
-    {u:'trisha.dv',city:'Cebu',ago:'4h',bg:'#c9d9d1',av:'#1f5f8b',top:['tank','#efe3cf'],bot:['shorts','#b9a58a'],sh:['slides','#1f5f8b'],l:942,w:['Sinag','Islas','Tsinelas Club']},
-    {u:'kuya.rj',city:'Davao',ago:'6h',bg:'#d6cbe6',av:'#c0392b',top:['jacket','#f0c419'],bot:['pants','#232323'],sh:['sneaker','#c0392b'],l:2210,w:['Bagyo Co.','Lakbay']},
-    {u:'mika.reyes',city:'Quezon City',ago:'9h',bg:'#f2d5c4',av:'#c86b7e',top:['dress','#c86b7e'],bot:null,sh:['slides','#b47a4a'],l:1730,w:['Mahal','Tsinelas Club']},
-    {u:'paulo.s',city:'Baguio',ago:'12h',bg:'#d5dcc3',av:'#3f7a3a',top:['hoodie','#4a4a4a'],bot:['shorts','#a89f91'],sh:['sneaker','#3f7a3a'],l:611,w:['Kalye Supply','Bagyo Co.']},
-    {u:'ella.mnl',city:'Pasig',ago:'1d',bg:'#cfe0ea',av:'#2c3e63',top:['shirt','#f1ead8'],bot:['pants','#2c3e63'],sh:['slides','#111111'],l:1098,w:['Islas','Baryo Denim']}
+    {u:'jm.laurel',city:'BGC',ago:'2h',bg:'#e9dcc7',av:'#2a2723',top:['tee','#1c1c1c'],bot:['pants','#1f1f1f'],sh:['sneaker','#1e1e1e'],l:1284,w:['Musinsa Standard','Travel','Adidas']},
+    {u:'trisha.dv',city:'Cebu',ago:'4h',bg:'#c9d9d1',av:'#1f5f8b',top:['tank','#efe3cf'],bot:['shorts','#b9a58a'],sh:['sneaker','#b8322a'],l:942,w:['Musinsa Standard Woman','SPAO','Puma']},
+    {u:'kuya.rj',city:'Davao',ago:'6h',bg:'#d6cbe6',av:'#c0392b',top:['hoodie','#4b5b3a'],bot:['pants','#4f5a3c'],sh:['sneaker','#f0ede6'],l:2210,w:['BAPE','WTAPS','Nike']},
+    {u:'mika.reyes',city:'Quezon City',ago:'9h',bg:'#f2d5c4',av:'#c86b7e',top:['dress','#bcd4e6'],bot:null,sh:['slides','#222222'],l:1730,w:['SPAO','Visvim']},
+    {u:'paulo.s',city:'Baguio',ago:'12h',bg:'#d5dcc3',av:'#3f7a3a',top:['hoodie','#4a4a4a'],bot:['shorts','#1a1a1a'],sh:['sneaker','#e6e4de'],l:611,w:['Dimitri Black','Drawfit','New Balance']},
+    {u:'ella.mnl',city:'Pasig',ago:'1d',bg:'#cfe0ea',av:'#2c3e63',top:['shirt','#a8763a'],bot:['pants','#5d7fa6'],sh:['sneaker','#f5f2ea'],l:1098,w:['Wacko Maria','Travel','Human Made']}
   ];
-  const KEYWORDS=['linen shirt','rain shell','tsinelas','wide-leg','bucket hat','inabel tote','slip dress','court sneaker'];
+  const KEYWORDS=['musinsa standard','samba','bape','human made','speedcat','kapital','wtaps','new balance 530'];
 
   /* ---------- rendering ---------- */
   const heart='<svg aria-hidden="true"><use href="#i-heart"/></svg>';
@@ -612,7 +637,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
   }
   function brandCard(b){
     const on=follows.has(b.name);
-    return `<div class="bcard"><div class="mark ${b.cls}">${b.mark}</div><div><h3>${b.name}</h3><p>${b.line}</p><p class="num">${fmtK(b.f+(on?1:0))} followers</p></div><button class="follow${on?' on':''}" data-follow="${b.name}" aria-pressed="${on}">${on?'Following':'Follow'}</button></div>`;
+    return `<div class="bcard"><div class="mark ${b.cls}">${b.rank?`<span class="rank num">${b.rank}</span>`:''}${b.mark}</div><div><h3>${b.name}</h3><p><span class="tag">${b.o}</span> ${b.line}</p><p class="num">${fmtK(b.f+(on?1:0))} followers</p></div><button class="follow${on?' on':''}" data-follow="${b.name}" aria-pressed="${on}">${on?'Following':'Follow'}</button></div>`;
   }
   function snapCard(s){
     const use=(sym,x,y,w,h,c)=>`<use href="#s-${sym}" x="${x}" y="${y}" width="${w}" height="${h}" style="color:${c}"/>`;
@@ -627,6 +652,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
   $('#saleRow').innerHTML=SALE.map(p=>card(p,{sale:true})).join('');
   $('#newGrid').innerHTML=NEW.map(p=>card(p)).join('');
   $('#brandGrid').innerHTML=BRANDS.map(brandCard).join('');
+  $('#jpGrid').innerHTML=JP.map(brandCard).join('');
   $('#snapRow').innerHTML=SNAPS.map(snapCard).join('');
 
   /* ---------- toast + badges ---------- */
@@ -657,7 +683,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
     }
     const fl=e.target.closest('[data-follow]');
     if(fl){
-      const name=fl.dataset.follow, b=BRANDS.find(x=>x.name===name);
+      const name=fl.dataset.follow, b=[...BRANDS,...JP].find(x=>x.name===name);
       if(follows.has(name)){follows.delete(name);toast(`Unfollowed ${name}`);}else{follows.add(name);toast(`Following ${name} · you'll see their drops first`);}
       store.set('follows',[...follows]);
       const on=follows.has(name);
@@ -742,7 +768,7 @@ footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface
   tick();setInterval(tick,1000);
 
   /* ---------- section tabs follow scroll ---------- */
-  const tabs=$$('#tabs .tab'), secs=['ranking','sale','brands','new','snap','magazine'].map(id=>$('#'+id));
+  const tabs=$$('#tabs .tab'), secs=['ranking','sale','brands','tokyo','new','snap','magazine'].map(id=>$('#'+id));
   let ticking=false;
   function spy(){
     ticking=false;
