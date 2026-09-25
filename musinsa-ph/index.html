@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Porma PH: a Musinsa-style fashion marketplace concept for the Philippines. Rankings, payday sale, local brands, Snap community and magazine.">
+<title>Porma PH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{
+  --ink:#15130f; --ink-2:#3f3a31; --muted:#7b7365; --line:#e7e2d9; --line-2:#d3ccc0;
+  --paper:#ffffff; --surface:#f4f1ea; --surface-2:#eae5db; --tile:#efebe3;
+  --accent:#e0432a; --accent-ink:#ffffff; --sun:#f3b52a; --sun-ink:#1a1405;
+  --good:#1f8a4c; --link:#1d5fc2;
+  --inv-bg:var(--ink); --inv-fg:var(--paper);
+  --shadow:0 10px 30px rgba(21,19,15,.08);
+  --radius:6px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ink:#f1ece3; --ink-2:#cfc8bb; --muted:#9d9585; --line:#2b2823; --line-2:#3d3931;
+    --paper:#121110; --surface:#1b1916; --surface-2:#26231d; --tile:#25221c;
+    --accent:#ff6a50; --accent-ink:#1a0c08; --sun:#f6c14a; --sun-ink:#1a1405;
+    --good:#4fc47f; --link:#8ab4ff;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink:#f1ece3; --ink-2:#cfc8bb; --muted:#9d9585; --line:#2b2823; --line-2:#3d3931;
+  --paper:#121110; --surface:#1b1916; --surface-2:#26231d; --tile:#25221c;
+  --accent:#ff6a50; --accent-ink:#1a0c08; --sun:#f6c14a; --sun-ink:#1a1405;
+  --good:#4fc47f; --link:#8ab4ff;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:76px}
+@media (min-width:769px){body{padding-bottom:0}}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px}
+@media (min-width:769px){.wrap{padding-inline:24px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+
+/* promo + header */
+.promo{background:var(--inv-bg);color:var(--inv-fg);font-size:12px;letter-spacing:.02em;text-align:center;padding:8px 16px}
+.promo b{color:var(--sun);font-weight:700}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.hdr-row{display:flex;align-items:center;gap:12px;height:60px}
+.logo{display:inline-flex;align-items:flex-start;gap:5px;font-weight:900;font-stretch:125%;font-size:24px;letter-spacing:-.01em;line-height:1;flex:0 0 auto}
+.logo .ph{font-stretch:100%;font-weight:800;font-size:9px;letter-spacing:.16em;background:var(--accent);color:var(--accent-ink);padding:3px 4px 2px;border-radius:3px;line-height:1}
+.search{position:relative;flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:999px;padding:0 14px;height:40px;max-width:520px;color:var(--muted)}
+.search input{flex:1;width:0;border:0;background:transparent;font:inherit;color:var(--ink);min-width:0;outline:none}
+.search input::placeholder{color:var(--muted)}
+.sug{position:absolute;left:0;right:0;top:46px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:12px;color:var(--ink);z-index:60}
+.sug h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.kw{display:flex;flex-wrap:wrap;gap:6px}
+.kw button{border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600}
+.kw button:hover{background:var(--surface)}
+.hit{display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;width:100%}
+.hit:hover{background:var(--surface)}
+.hit i{width:36px;height:36px;border-radius:4px;background:var(--tile);display:grid;place-items:center;flex:0 0 auto}
+.hit i svg{width:26px;height:26px}
+.hit b{font-size:12px;display:block}
+.hit span{font-size:12px;color:var(--muted)}
+.hit em{margin-left:auto;font-style:normal;font-weight:800;font-size:13px}
+.icons{margin-left:auto;display:flex;gap:2px;flex:0 0 auto}
+@media (max-width:480px){.hdr-row{gap:10px}.icon-btn{width:36px}.hide-sm{display:none}}
+.icon-btn{position:relative;width:40px;height:40px;display:grid;place-items:center;border-radius:50%}
+.icon-btn:hover{background:var(--surface)}
+.icon-btn svg{width:22px;height:22px}
+.badge{position:absolute;top:3px;right:1px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-size:10px;font-weight:800;display:grid;place-items:center;line-height:1}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-inline:-16px;padding-inline:16px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:10px 11px 9px;font-weight:600;font-size:14px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-color:var(--ink)}
+.tab.hot{color:var(--accent)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:var(--radius);margin-top:14px;aspect-ratio:16/6.5;max-width:100%;background:var(--surface)}
+@media (max-width:768px){.hero{aspect-ratio:4/4.6;border-radius:0;margin-inline:-16px;max-width:calc(100% + 32px);margin-top:0}}
+.slides{display:flex;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.slide{flex:0 0 100%;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;overflow:hidden}
+@media (min-width:769px){.slide{padding:40px 44px}}
+.slide .eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
+.slide h2{font-size:clamp(34px,7vw,64px);font-weight:900;font-stretch:112%;letter-spacing:-.03em;line-height:.95;max-width:12ch}
+.slide p{margin-top:12px;font-size:clamp(13px,1.6vw,16px);max-width:38ch;opacity:.92}
+.slide .cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 18px;border-radius:999px;font-weight:700;font-size:13px;width:max-content}
+.slide .big{position:absolute;right:-.06em;top:-.12em;font-size:clamp(150px,34vw,380px);font-weight:900;font-stretch:125%;letter-spacing:-.06em;line-height:1;opacity:.14;pointer-events:none;user-select:none}
+.slide .art{position:absolute;right:-6%;top:50%;transform:translateY(-50%);width:min(52%,420px);opacity:.18;pointer-events:none}
+.s1{background:linear-gradient(135deg,#e8482c,#b52d17);color:#fff}
+.s1 .cta{background:#fff;color:#b52d17}
+.s2{background:linear-gradient(135deg,#123f4d,#071c25);color:#eef6f7}
+.s2 .cta{background:#f3b52a;color:#1a1405}
+.s3{background:linear-gradient(135deg,#f6bd38,#e9a614);color:#1a1405}
+.s3 .cta{background:#1a1405;color:#f6bd38}
+.dots{position:absolute;left:28px;bottom:14px;display:flex;gap:6px}
+@media (min-width:769px){.dots{left:44px;bottom:20px}}
+.dot{width:22px;height:3px;border-radius:2px;background:currentColor;opacity:.35}
+.dot.on{opacity:1}
+.hero .arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.28);color:#fff;display:none;place-items:center}
+.hero .arrow.l{left:12px}.hero .arrow.r{right:12px}
+@media (min-width:769px){.hero .arrow{display:grid}}
+.counter{position:absolute;right:16px;bottom:14px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,.28);color:#fff}
+@media (min-width:769px){.counter{right:44px;bottom:20px}}
+
+/* quick menu */
+.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:14px 6px;margin-top:22px;list-style:none;padding:0}
+@media (min-width:769px){.quick{grid-template-columns:repeat(10,1fr);margin-top:28px}}
+.q{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--ink-2)}
+.q i{width:58px;height:58px;border-radius:18px;background:var(--surface);display:grid;place-items:center;color:var(--ink);transition:transform .15s}
+.q:hover i{transform:translateY(-2px);background:var(--surface-2)}
+.q svg{width:34px;height:34px}
+
+/* sections */
+.sec{margin-top:48px;scroll-margin-top:112px}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sec-h h2{font-size:22px;font-weight:800;letter-spacing:-.02em;font-stretch:105%}
+.sec-h p{margin-top:3px;color:var(--muted);font-size:13px}
+.sec-h p .live{display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-weight:700}
+.sec-h p .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.more{font-size:13px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:2px;white-space:nowrap}
+.more:hover{color:var(--ink)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:16px;margin-inline:-16px;padding-inline:16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* product cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px}
+@media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){.grid{grid-template-columns:repeat(5,1fr);gap:28px 16px}}
+.row{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x mandatory;padding-bottom:4px}
+.row::-webkit-scrollbar{display:none}
+.row .card{flex:0 0 46%;scroll-snap-align:start}
+@media (min-width:600px){.row .card{flex-basis:31%}}
+@media (min-width:900px){.row{display:grid;grid-template-columns:repeat(6,1fr);gap:28px 16px;margin:0;padding:0;overflow:visible}.row .card{flex:auto}}
+.card{position:relative;display:flex;flex-direction:column;gap:7px;min-width:0}
+.thumb{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:var(--radius);background:var(--tile);overflow:hidden;display:grid;place-items:center}
+.thumb>svg{width:68%;height:68%;overflow:visible;filter:drop-shadow(0 6px 10px rgba(0,0,0,.12))}
+.rank{position:absolute;left:0;top:0;background:var(--ink);color:var(--paper);font-weight:900;font-stretch:80%;font-size:14px;width:30px;height:30px;display:grid;place-items:center;border-bottom-right-radius:var(--radius);z-index:1}
+.thumb .acts{position:absolute;right:6px;bottom:6px;display:flex;gap:4px}
+.thumb .acts button{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--paper);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.thumb .acts svg{width:17px;height:17px}
+.thumb .acts button.on{color:var(--accent)}
+.thumb .acts button.on{--hf:currentColor}
+.sale-badge{position:absolute;left:8px;top:8px;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:800;padding:3px 7px;border-radius:3px}
+.brand{font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.delta{font-size:11px;font-weight:800;letter-spacing:.02em}
+.delta.up{color:var(--accent)}.delta.dn{color:var(--link)}.delta.new{color:var(--good)}
+.pname{font-size:13px;color:var(--ink-2);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:-3px}
+.price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price .off{color:var(--accent);font-weight:800;font-size:14px}
+.price .now{font-weight:800;font-size:15px}
+.price .was{color:var(--muted);text-decoration:line-through;font-size:12px}
+.meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;background:var(--surface-2);color:var(--ink-2);letter-spacing:.02em}
+.tag.cod{background:color-mix(in srgb,var(--good) 14%,var(--paper));color:var(--good)}
+.tag.gc{background:color-mix(in srgb,var(--link) 12%,var(--paper));color:var(--link)}
+.likes{font-size:11px;color:var(--muted);display:inline-flex;align-items:center;gap:3px}
+.likes svg{width:11px;height:11px}
+
+/* payday strip */
+.pay{background:var(--inv-bg);color:var(--inv-fg);border-radius:var(--radius);padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-bottom:18px}
+.pay .kicker{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--sun)}
+.pay h2{font-size:clamp(26px,4vw,34px);font-weight:900;font-stretch:118%;letter-spacing:-.02em;line-height:1}
+.pay p{color:color-mix(in srgb,var(--inv-fg) 70%,var(--inv-bg));font-size:13px;margin-top:4px}
+.cd{display:flex;gap:6px;margin-left:auto;align-items:flex-start}
+.cd div{min-width:54px;text-align:center;background:color-mix(in srgb,var(--inv-fg) 10%,var(--inv-bg));border-radius:6px;padding:8px 4px 6px}
+.cd b{display:block;font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1}
+.cd span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--inv-fg) 60%,var(--inv-bg))}
+.cd i{font-style:normal;font-size:22px;font-weight:900;line-height:38px;opacity:.5}
+
+/* brands */
+.brands{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (min-width:600px){.brands{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){.brands{grid-template-columns:repeat(5,1fr)}}
+.bcard{border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.mark{height:60px;display:flex;align-items:center;justify-content:center;background:var(--surface);border-radius:4px;font-size:20px;font-weight:900;letter-spacing:-.01em;overflow:hidden;padding:0 8px;white-space:nowrap}
+.mark.wide{font-stretch:125%;letter-spacing:.08em;font-size:17px}
+.mark.narrow{font-stretch:68%;font-size:30px;letter-spacing:.01em}
+.mark.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:30px;letter-spacing:0}
+.mark.mono{font-stretch:88%;font-weight:600;font-size:15px;letter-spacing:.2em;text-transform:uppercase}
+.mark.box{background:var(--ink);color:var(--paper);font-stretch:110%;font-size:16px;letter-spacing:.04em}
+.bcard h3{font-size:14px;font-weight:800}
+.bcard p{font-size:12px;color:var(--muted);margin-top:2px}
+.follow{border:1px solid var(--ink);border-radius:4px;padding:7px 0;font-weight:700;font-size:12px;text-align:center;margin-top:auto}
+.follow.on{background:var(--ink);color:var(--paper)}
+
+/* snap */
+.snaps{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x mandatory;padding-bottom:4px}
+.snaps::-webkit-scrollbar{display:none}
+.snap{flex:0 0 58%;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;min-width:0}
+@media (min-width:600px){.snap{flex-basis:31%}}
+@media (min-width:900px){.snaps{display:grid;grid-template-columns:repeat(6,1fr);overflow:visible;margin:0;padding:0}.snap{flex:auto}}
+.look{aspect-ratio:3/4;max-width:100%;border-radius:var(--radius);display:grid;place-items:center;position:relative;overflow:hidden}
+.look svg{height:84%;width:auto;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18))}
+.look .city{position:absolute;left:8px;top:8px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:3px;background:rgba(0,0,0,.35);color:#fff}
+.look .hearts{position:absolute;right:8px;bottom:8px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.35);color:#fff;display:inline-flex;align-items:center;gap:4px}
+.look .hearts{--hf:#fff}
+.look .hearts svg{width:11px;height:11px}
+.who{display:flex;align-items:center;gap:8px;font-size:12px;min-width:0}
+.who b{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who span{color:var(--muted);font-size:11px}
+.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:11px;color:#fff;flex:0 0 auto}
+.wear{font-size:11px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px}
+.wear span{background:var(--surface);padding:2px 6px;border-radius:3px}
+
+/* magazine */
+.mag{display:grid;gap:14px}
+@media (min-width:769px){.mag{grid-template-columns:1.6fr 1fr 1fr}}
+.story{position:relative;border-radius:var(--radius);overflow:hidden;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:#fff;isolation:isolate}
+@media (min-width:769px){.story.lead{min-height:340px;padding:28px}}
+.story .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;opacity:.85;margin-bottom:8px}
+.story h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-style:italic;font-size:30px;line-height:1;letter-spacing:-.01em;max-width:16ch}
+.story.lead h3{font-size:clamp(34px,4.4vw,52px)}
+.story p{margin-top:8px;font-size:13px;opacity:.9;max-width:44ch}
+.story .art{position:absolute;right:-8%;top:-6%;width:56%;opacity:.16;z-index:-1}
+.m1{background:linear-gradient(160deg,#2c2a5a,#111027)}
+.m2{background:linear-gradient(160deg,#0e6b5c,#053a31)}
+.m3{background:linear-gradient(160deg,#8a3a1e,#3d160a)}
+
+/* app strip */
+.app{margin-top:48px;border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;background:var(--surface)}
+.app h2{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.app p{color:var(--muted);font-size:13px;margin-top:4px}
+.app .stores{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.store{border:1px solid var(--ink);border-radius:8px;padding:9px 14px;font-weight:700;font-size:12px;display:inline-flex;align-items:center;gap:8px;background:var(--paper)}
+
+/* footer */
+footer{margin-top:56px;border-top:1px solid var(--line);background:var(--surface);padding-block:34px 44px;font-size:13px;color:var(--ink-2)}
+.f-grid{display:grid;gap:26px 20px;grid-template-columns:1fr 1fr}
+@media (min-width:769px){.f-grid{grid-template-columns:1.6fr 1fr 1fr 1fr}}
+.f-grid h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.f-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.f-grid a:hover{text-decoration:underline}
+.f-about{grid-column:1/-1}
+@media (min-width:769px){.f-about{grid-column:auto}}
+.f-about .logo{font-size:22px;margin-bottom:10px}
+.f-about p{max-width:36ch;color:var(--muted)}
+.pms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pm{border:1px solid var(--line-2);border-radius:4px;padding:4px 8px;font-size:11px;font-weight:800;background:var(--paper);letter-spacing:.02em}
+.legal{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.7;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+
+/* mobile tab bar + toast */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--paper);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0 7px;font-size:10px;font-weight:600;color:var(--muted)}
+.tabbar a.on{color:var(--ink)}
+.tabbar svg{width:22px;height:22px}
+@media (min-width:769px){.tabbar{display:none}}
+.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translate(-50%,10px);background:var(--inv-bg);color:var(--inv-fg);padding:10px 16px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:70;white-space:nowrap;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (min-width:769px){.toast{bottom:32px}}
+@media (prefers-reduced-motion:reduce){.slides,.toast,.q i{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="s-tee" viewBox="0 0 100 100"><path fill="currentColor" d="M30 16 L42 11 C44 18 56 18 58 11 L70 16 L90 32 L84 46 L70 42 L70 90 L30 90 L30 42 L16 46 L10 32 Z"/><path fill="rgba(0,0,0,.16)" d="M42 11 C44 18 56 18 58 11 L61 12.5 C58 22 42 22 39 12.5 Z"/></symbol>
+  <symbol id="s-tank" viewBox="0 0 100 100"><path fill="currentColor" d="M28 6 L38 6 C40 24 60 24 62 6 L72 6 C62 18 62 34 74 46 L70 52 L70 92 L30 92 L30 52 L26 46 C38 34 38 18 28 6 Z"/></symbol>
+  <symbol id="s-shirt" viewBox="0 0 100 100"><path fill="currentColor" d="M30 18 L42 12 L50 24 L58 12 L70 18 L90 34 L84 48 L70 44 L70 92 L30 92 L30 44 L16 48 L10 34 Z"/><path fill="rgba(0,0,0,.16)" d="M42 12 L50 24 L44 33 L35 20 Z M58 12 L50 24 L56 33 L65 20 Z"/><g fill="rgba(0,0,0,.28)"><circle cx="50" cy="42" r="1.7"/><circle cx="50" cy="54" r="1.7"/><circle cx="50" cy="66" r="1.7"/><circle cx="50" cy="78" r="1.7"/></g></symbol>
+  <symbol id="s-hoodie" viewBox="0 0 100 100"><path fill="currentColor" d="M32 20 L40 12 C42 4 58 4 60 12 L68 20 L92 40 L86 78 L70 74 L70 92 L30 92 L30 74 L14 78 L8 40 Z"/><path fill="rgba(0,0,0,.16)" d="M40 12 C42 4 58 4 60 12 C58 24 42 24 40 12 Z"/><rect fill="rgba(0,0,0,.14)" x="36" y="66" width="28" height="18" rx="3"/><path stroke="rgba(0,0,0,.25)" stroke-width="1.6" fill="none" d="M46 24 L47 42 M54 24 L53 42"/></symbol>
+  <symbol id="s-jacket" viewBox="0 0 100 100"><path fill="currentColor" d="M30 18 L42 12 L50 20 L58 12 L70 18 L92 36 L86 72 L70 68 L70 92 L30 92 L30 68 L14 72 L8 36 Z"/><path fill="rgba(0,0,0,.16)" d="M42 12 L50 20 L58 12 L55 30 L50 26 L45 30 Z"/><rect fill="rgba(0,0,0,.24)" x="49" y="24" width="2" height="64"/><rect fill="rgba(0,0,0,.12)" x="34" y="64" width="11" height="12" rx="2"/><rect fill="rgba(0,0,0,.12)" x="55" y="64" width="11" height="12" rx="2"/></symbol>
+  <symbol id="s-pants" viewBox="0 0 100 100"><path fill="currentColor" d="M28 8 L72 8 L76 92 L56 92 L50 44 L44 92 L24 92 Z"/><rect fill="rgba(0,0,0,.16)" x="28" y="8" width="44" height="5"/><path stroke="rgba(0,0,0,.14)" stroke-width="1.4" fill="none" d="M36 13 L33 92 M64 13 L67 92"/></symbol>
+  <symbol id="s-shorts" viewBox="0 0 100 100"><path fill="currentColor" d="M28 24 L72 24 L76 76 L56 76 L50 56 L44 76 L24 76 Z"/><rect fill="rgba(0,0,0,.16)" x="28" y="24" width="44" height="5"/><path stroke="rgba(0,0,0,.18)" stroke-width="1.4" fill="none" d="M27 44 C31 40 36 40 40 44 M73 44 C69 40 64 40 60 44"/></symbol>
+  <symbol id="s-dress" viewBox="0 0 100 100"><path fill="currentColor" d="M34 8 L38 8 L50 24 L62 8 L66 8 L70 36 L64 46 L78 92 L22 92 L36 46 L30 36 Z"/><path stroke="rgba(0,0,0,.2)" stroke-width="1.4" fill="none" d="M36 46 L64 46"/></symbol>
+  <symbol id="s-sneaker" viewBox="0 0 100 100"><path fill="currentColor" d="M8 66 C8 58 14 56 22 54 L44 40 C50 36 56 38 60 44 L74 52 C86 56 94 58 92 68 L8 68 Z"/><path fill="rgba(0,0,0,.22)" d="M6 68 L94 68 C94 76 90 78 84 78 L14 78 C8 78 6 74 6 68 Z"/><path stroke="rgba(0,0,0,.22)" stroke-width="2" fill="none" d="M46 44 L58 50 M42 48 L56 55 M38 52 L54 60"/><path fill="rgba(255,255,255,.28)" d="M62 46 L74 52 C80 54 84 56 86 60 L70 60 Z"/></symbol>
+  <symbol id="s-slides" viewBox="0 0 100 100"><ellipse fill="currentColor" cx="35" cy="52" rx="14" ry="40"/><ellipse fill="currentColor" cx="65" cy="52" rx="14" ry="40"/><path fill="rgba(0,0,0,.26)" d="M21 44 C29 34 41 34 49 44 L49 52 C41 44 29 44 21 52 Z M51 44 C59 34 71 34 79 44 L79 52 C71 44 59 44 51 52 Z"/></symbol>
+  <symbol id="s-cap" viewBox="0 0 100 100"><path fill="currentColor" d="M22 72 C22 48 36 38 50 38 C64 38 78 48 78 72 Z"/><rect fill="currentColor" x="16" y="70" width="66" height="8" rx="4"/><path fill="rgba(0,0,0,.22)" d="M76 70 C88 70 96 74 96 80 C88 78 82 78 74 78 Z"/><path stroke="rgba(0,0,0,.16)" stroke-width="1.4" fill="none" d="M50 38 L50 70 M36 42 L40 70 M64 42 L60 70"/></symbol>
+  <symbol id="s-bucket" viewBox="0 0 100 100"><path fill="currentColor" d="M32 32 C32 22 68 22 68 32 L72 60 L28 60 Z"/><path fill="currentColor" d="M12 60 L88 60 C92 68 86 76 76 76 L24 76 C14 76 8 68 12 60 Z"/><rect fill="rgba(0,0,0,.22)" x="28" y="54" width="44" height="6"/><path stroke="rgba(0,0,0,.14)" stroke-width="1.4" fill="none" d="M18 68 L82 68"/></symbol>
+  <symbol id="s-tote" viewBox="0 0 100 100"><path stroke="currentColor" stroke-width="5" fill="none" d="M34 32 C34 8 66 8 66 32"/><path fill="currentColor" d="M20 30 L80 30 L84 92 L16 92 Z"/><path fill="rgba(255,255,255,.32)" d="M19 44 L81 44 L81.5 50 L18.5 50 Z M18 62 L82 62 L82.5 68 L17.5 68 Z"/></symbol>
+  <symbol id="s-sling" viewBox="0 0 100 100"><path stroke="currentColor" stroke-width="4" fill="none" d="M26 46 C26 14 74 14 74 46"/><rect fill="currentColor" x="14" y="44" width="72" height="40" rx="10"/><rect fill="rgba(0,0,0,.2)" x="14" y="56" width="72" height="4"/><rect fill="rgba(0,0,0,.24)" x="44" y="52" width="12" height="10" rx="2"/></symbol>
+  <symbol id="s-shades" viewBox="0 0 100 100"><rect fill="currentColor" x="10" y="42" width="80" height="4"/><rect fill="currentColor" x="12" y="40" width="32" height="22" rx="9"/><rect fill="currentColor" x="56" y="40" width="32" height="22" rx="9"/><path fill="rgba(255,255,255,.28)" d="M18 46 C20 42 34 42 38 46 L36 52 C30 48 22 48 20 52 Z M62 46 C64 42 78 42 82 46 L80 52 C74 48 66 48 64 52 Z"/></symbol>
+  <symbol id="s-bottle" viewBox="0 0 100 100"><rect fill="currentColor" x="40" y="10" width="20" height="10" rx="2"/><path fill="currentColor" d="M36 22 L64 22 L68 40 L68 88 C68 91 66 92 63 92 L37 92 C34 92 32 91 32 88 L32 40 Z"/><rect fill="rgba(255,255,255,.35)" x="38" y="50" width="24" height="22" rx="2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5 L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path fill="var(--hf,none)" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 20.5 C7 16.5 3 13.2 3 8.8 A4.3 4.3 0 0 1 12 6.6 A4.3 4.3 0 0 1 21 8.8 C21 13.2 17 16.5 12 20.5 Z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 8 H19 L20 21 H4 Z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M9 10 V7 A3 3 0 0 1 15 7 V10"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 20 C5 15.5 8 14 12 14 C16 14 19 15.5 20 20"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11 L12 3 L21 11 V21 H14 V15 H10 V21 H3 Z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></g></symbol>
+  <symbol id="i-snap" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 5 L9.5 3 H14.5 L16 5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6 L15 12 L9 18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 5 V19 M5 12 H19"/></symbol>
+</svg>
+
+<div class="promo">Mabuhay! <b>Free shipping</b> nationwide on orders over ₱1,500 <span class="hide-sm">· Cash on delivery available</span> · <b>GCash</b> 5% cashback until 9.30</div>
+
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr-row">
+      <a class="logo" href="#top" aria-label="Porma PH home">PORMA<span class="ph">PH</span></a>
+      <div class="search" role="search">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="q" type="search" placeholder="Search brands, items, “tsinelas”" autocomplete="off" aria-label="Search">
+        <div class="sug" id="sug" hidden></div>
+      </div>
+      <div class="icons">
+        <button class="icon-btn" id="likeBtn" aria-label="Liked items"><svg aria-hidden="true"><use href="#i-heart"/></svg><span class="badge num" id="likeCount" hidden>0</span></button>
+        <button class="icon-btn" id="bagBtn" aria-label="Shopping bag"><svg aria-hidden="true"><use href="#i-bag"/></svg><span class="badge num" id="bagCount" hidden>0</span></button>
+        <button class="icon-btn" id="userBtn" aria-label="My account"><svg aria-hidden="true"><use href="#i-user"/></svg></button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Sections" id="tabs">
+      <a class="tab on" href="#top">Recommended</a>
+      <a class="tab" href="#ranking">Ranking</a>
+      <a class="tab hot" href="#sale">Payday Sale</a>
+      <a class="tab" href="#brands">Brands</a>
+      <a class="tab" href="#new">New</a>
+      <a class="tab" href="#snap">Snap</a>
+      <a class="tab" href="#magazine">Magazine</a>
+      <a class="tab" href="#sale">Outlet</a>
+      <a class="tab" href="#new">Beauty</a>
+      <a class="tab" href="#new">Sports</a>
+      <a class="tab" href="#new">Kids</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured">
+    <div class="slides" id="slides">
+      <div class="slide s1" role="group" aria-label="1 of 3">
+        <div class="big" aria-hidden="true">9.30</div>
+        <div class="eyebrow">Sept 25 – 30 · Payday week</div>
+        <h2>Payday Sale</h2>
+        <p>Up to 60% off across 1,200+ brands. COD nationwide, plus 5% GCash cashback on every order.</p>
+        <a class="cta" href="#sale">Shop the sale <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+      </div>
+      <div class="slide s2" role="group" aria-label="2 of 3">
+        <svg class="art" viewBox="0 0 100 100" aria-hidden="true" style="color:#fff"><use href="#s-jacket"/></svg>
+        <div class="eyebrow">The tag-ulan edit</div>
+        <h2>Rain-proof your commute</h2>
+        <p>Packable shells, quick-dry tees and slides that shrug off a flooded EDSA. Picked for the monsoon months.</p>
+        <a class="cta" href="#new">See the edit <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+      </div>
+      <div class="slide s3" role="group" aria-label="3 of 3">
+        <div class="big" aria-hidden="true">PH</div>
+        <div class="eyebrow">Local Brands Week</div>
+        <h2>Made in Manila, Cebu &amp; Davao</h2>
+        <p>120 homegrown labels, one checkout. Free returns on every local brand order this week.</p>
+        <a class="cta" href="#brands">Meet the brands <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+      </div>
+    </div>
+    <button class="arrow l" id="prev" aria-label="Previous slide"><svg width="20" height="20" style="transform:scaleX(-1)" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    <button class="arrow r" id="next" aria-label="Next slide"><svg width="20" height="20" aria-hidden="true"><use href="#i-chev"/></svg></button>
+    <div class="dots" id="dots" style="color:#fff"></div>
+    <div class="counter num" id="counter">1 / 3</div>
+  </section>
+
+  <ul class="quick" aria-label="Categories">
+    <li><a class="q" href="#ranking"><i><svg aria-hidden="true"><use href="#s-tee"/></svg></i>Tops</a></li>
+    <li><a class="q" href="#ranking"><i><svg aria-hidden="true"><use href="#s-pants"/></svg></i>Bottoms</a></li>
+    <li><a class="q" href="#new"><i><svg aria-hidden="true"><use href="#s-jacket"/></svg></i>Outerwear</a></li>
+    <li><a class="q" href="#new"><i><svg aria-hidden="true"><use href="#s-dress"/></svg></i>Dresses</a></li>
+    <li><a class="q" href="#ranking"><i><svg aria-hidden="true"><use href="#s-sneaker"/></svg></i>Sneakers</a></li>
+    <li><a class="q" href="#sale"><i><svg aria-hidden="true"><use href="#s-slides"/></svg></i>Slides</a></li>
+    <li><a class="q" href="#ranking"><i><svg aria-hidden="true"><use href="#s-tote"/></svg></i>Bags</a></li>
+    <li><a class="q" href="#new"><i><svg aria-hidden="true"><use href="#s-cap"/></svg></i>Caps</a></li>
+    <li><a class="q" href="#new"><i><svg aria-hidden="true"><use href="#s-shades"/></svg></i>Eyewear</a></li>
+    <li><a class="q" href="#new"><i><svg aria-hidden="true"><use href="#s-bottle"/></svg></i>Beauty</a></li>
+  </ul>
+
+  <section class="sec" id="ranking">
+    <div class="sec-h">
+      <div><h2>Ranking</h2><p><span class="live">Live</span> · Most-bought in the last 24 hours, all of the Philippines</p></div>
+      <a class="more" href="#ranking">See top 100 <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="chips" id="rankChips" role="tablist" aria-label="Ranking category">
+      <button class="chip on" role="tab" aria-selected="true" data-cat="all">All</button>
+      <button class="chip" role="tab" aria-selected="false" data-cat="men">Men</button>
+      <button class="chip" role="tab" aria-selected="false" data-cat="women">Women</button>
+      <button class="chip" role="tab" aria-selected="false" data-cat="shoes">Shoes</button>
+      <button class="chip" role="tab" aria-selected="false" data-cat="bags">Bags &amp; Acc.</button>
+    </div>
+    <div class="grid" id="rankGrid"></div>
+  </section>
+
+  <section class="sec" id="sale">
+    <div class="pay">
+      <div>
+        <div class="kicker">Payday Sale · ends Sept 30, 11:59 PM PHT</div>
+        <h2>Sweldo day deals</h2>
+        <p>Extra 10% off with code <b>SWELDO</b> at checkout. Stacks with GCash cashback.</p>
+      </div>
+      <div class="cd" id="cd" aria-live="off">
+        <div><b class="num" id="cdD">0</b><span>days</span></div><i>:</i>
+        <div><b class="num" id="cdH">00</b><span>hrs</span></div><i>:</i>
+        <div><b class="num" id="cdM">00</b><span>min</span></div><i>:</i>
+        <div><b class="num" id="cdS">00</b><span>sec</span></div>
+      </div>
+    </div>
+    <div class="sec-h">
+      <div><h2>Biggest drops</h2><p>Deepest markdowns this payday, restocked daily</p></div>
+      <a class="more" href="#sale">All sale items <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="row" id="saleRow"></div>
+  </section>
+
+  <section class="sec" id="brands">
+    <div class="sec-h">
+      <div><h2>Local brands week</h2><p>Homegrown labels from Manila, Cebu, Davao and Baguio</p></div>
+      <a class="more" href="#brands">All 120 brands <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="brands" id="brandGrid"></div>
+  </section>
+
+  <section class="sec" id="new">
+    <div class="sec-h">
+      <div><h2>New this week</h2><p>Bagong dating · 340 items added since Monday</p></div>
+      <a class="more" href="#new">See all new <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="grid" id="newGrid"></div>
+  </section>
+
+  <section class="sec" id="snap">
+    <div class="sec-h">
+      <div><h2>Snap</h2><p>Real outfits from the community. Tap a look to shop the pieces.</p></div>
+      <a class="more" href="#snap">Post your porma <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="snaps" id="snapRow"></div>
+  </section>
+
+  <section class="sec" id="magazine">
+    <div class="sec-h">
+      <div><h2>Magazine</h2><p>Style notes, brand stories and city guides</p></div>
+      <a class="more" href="#magazine">All stories <svg width="14" height="14" aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <div class="mag">
+      <a class="story lead m1" href="#magazine">
+        <svg class="art" viewBox="0 0 100 100" aria-hidden="true" style="color:#fff"><use href="#s-shirt"/></svg>
+        <div class="kicker">Feature</div>
+        <h3>The barong is streetwear now</h3>
+        <p>Six young labels are cutting piña and jusi into boxy shirts, and Manila's skaters are wearing them to the park.</p>
+      </a>
+      <a class="story m2" href="#magazine">
+        <svg class="art" viewBox="0 0 100 100" aria-hidden="true" style="color:#fff"><use href="#s-slides"/></svg>
+        <div class="kicker">City guide</div>
+        <h3>Cebu's sneaker corners</h3>
+        <p>Where the resellers, the restorers and the ₱900 slides all meet.</p>
+      </a>
+      <a class="story m3" href="#magazine">
+        <svg class="art" viewBox="0 0 100 100" aria-hidden="true" style="color:#fff"><use href="#s-tote"/></svg>
+        <div class="kicker">Craft</div>
+        <h3>Handloom, from Ilocos to your tote</h3>
+        <p>Inside the weaving co-ops turning inabel into everyday bags.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="app">
+    <div>
+      <h2>Porma in your pocket</h2>
+      <p>App-only drops every Friday at 8 PM, GCash and Maya checkout, and order tracking down to the rider.</p>
+    </div>
+    <div class="stores">
+      <span class="store">App Store · soon</span>
+      <span class="store">Google Play · soon</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-about">
+        <div class="logo">PORMA<span class="ph">PH</span></div>
+        <p>Pinoy fashion, ranked daily. A marketplace for the brands you already wear and the ones you're about to.</p>
+        <div class="pms" aria-label="Payment methods">
+          <span class="pm">GCash</span><span class="pm">Maya</span><span class="pm">GrabPay</span><span class="pm">COD</span><span class="pm">BPI</span><span class="pm">BDO</span><span class="pm">Visa</span><span class="pm">Mastercard</span><span class="pm">7-Eleven</span>
+        </div>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul><li><a href="#top">Track my order</a></li><li><a href="#top">Shipping &amp; COD areas</a></li><li><a href="#top">Returns within 7 days</a></li><li><a href="#top">Size guide (PH / US / EU)</a></li><li><a href="#top">Customer care 9 AM – 9 PM PHT</a></li></ul>
+      </div>
+      <div>
+        <h4>Sell on Porma</h4>
+        <ul><li><a href="#brands">Brand onboarding</a></li><li><a href="#brands">Fulfilment by Porma</a></li><li><a href="#snap">Creator program</a></li><li><a href="#magazine">Advertise</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#top">About</a></li><li><a href="#top">Careers · Makati &amp; Cebu</a></li><li><a href="#top">Privacy</a></li><li><a href="#top">Terms</a></li><li><a href="#top">Data Privacy Act notice</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Porma. Concept site: brands, products and prices are illustrative.</span>
+      <span>Prices in Philippine peso (₱), VAT included · Ships from Parañaque, Cebu and Davao hubs</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="tabbar" aria-label="Mobile navigation">
+  <a class="on" href="#top"><svg aria-hidden="true"><use href="#i-home"/></svg>Home</a>
+  <a href="#ranking"><svg aria-hidden="true"><use href="#i-grid"/></svg>Category</a>
+  <a href="#snap"><svg aria-hidden="true"><use href="#i-snap"/></svg>Snap</a>
+  <a href="#ranking" id="tabLikes"><svg aria-hidden="true"><use href="#i-heart"/></svg>Likes</a>
+  <a href="#top"><svg aria-hidden="true"><use href="#i-user"/></svg>My</a>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const peso=n=>'₱'+n.toLocaleString('en-PH');
+  const fmtK=n=>n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'k':String(n);
+  const store={get(k,d){try{const v=localStorage.getItem('porma:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('porma:'+k,JSON.stringify(v))}catch(e){}}};
+  const liked=new Set(store.get('liked',[])), bag=store.get('bag',[]), follows=new Set(store.get('follows',[]));
+
+  /* ---------- data (illustrative) ---------- */
+  const RANK=[
+    {id:1,b:'Kalye Supply',n:'Oversized boxy tee "Manila"',p:790,w:1190,c:'#2a2723',s:'tee',cat:'men',d:0,l:4210,t:['COD','Free ship']},
+    {id:2,b:'Islas',n:'Linen camp-collar shirt, sand',p:1490,w:2190,c:'#d9c39a',s:'shirt',cat:'men',d:1,l:3880,t:['COD']},
+    {id:3,b:'Tsinelas Club',n:'Recycled rubber slides, marine',p:890,w:0,c:'#1f5f8b',s:'slides',cat:'shoes',d:'new',l:5120,t:['Free ship','GCash 5%']},
+    {id:4,b:'Habi Studio',n:'Inabel stripe tote, indigo',p:1250,w:0,c:'#2c3e8a',s:'tote',cat:'bags',d:0,l:2960,t:['Local']},
+    {id:5,b:'Bagyo Co.',n:'Packable rain shell 2.0',p:2390,w:3490,c:'#f0c419',s:'jacket',cat:'men',d:3,l:6040,t:['COD','Free ship']},
+    {id:6,b:'Sinag',n:'Ribbed tank, cream',p:490,w:0,c:'#efe3cf',s:'tank',cat:'women',d:-2,l:2210,t:['3 for ₱1,200']},
+    {id:7,b:'Baryo Denim',n:'Wide-leg jeans, mid wash',p:1890,w:2590,c:'#6f8fb0',s:'pants',cat:'women',d:1,l:3350,t:['COD']},
+    {id:8,b:'Lakbay',n:'Trail runner "Taal"',p:3990,w:4990,c:'#3f7a3a',s:'sneaker',cat:'shoes',d:-1,l:4470,t:['Free ship']},
+    {id:9,b:'Mahal',n:'Satin slip dress, rose',p:1690,w:0,c:'#c86b7e',s:'dress',cat:'women',d:'new',l:1980,t:['Local']},
+    {id:10,b:'Tahanan',n:'Corduroy bucket hat, walnut',p:690,w:0,c:'#8d5a3b',s:'bucket',cat:'bags',d:0,l:1720,t:['COD']},
+    {id:11,b:'Kalye Supply',n:'Heavyweight hoodie, charcoal',p:1590,w:1990,c:'#4a4a4a',s:'hoodie',cat:'men',d:2,l:2890,t:['COD']},
+    {id:12,b:'Lakbay',n:'Court sneaker, off-white',p:2990,w:0,c:'#e8e2d6',s:'sneaker',cat:'shoes',d:0,l:2650,t:['Free ship']},
+    {id:13,b:'Islas',n:'Drawstring linen shorts',p:990,w:1390,c:'#b9a58a',s:'shorts',cat:'men',d:-1,l:2100,t:['COD']},
+    {id:14,b:'Sinag',n:'Sling bag, tangerine',p:850,w:0,c:'#e8702a',s:'sling',cat:'bags',d:'new',l:1560,t:['GCash 5%']},
+    {id:15,b:'Mahal',n:'Puff-sleeve mini dress, black',p:1490,w:1990,c:'#1a1a1a',s:'dress',cat:'women',d:1,l:1890,t:['COD']},
+    {id:16,b:'Tsinelas Club',n:'Strappy sandals, tan',p:1190,w:0,c:'#b47a4a',s:'slides',cat:'shoes',d:2,l:1430,t:['Local']},
+    {id:17,b:'Tahanan',n:'Six-panel cap, olive',p:590,w:790,c:'#5c6b3a',s:'cap',cat:'bags',d:-2,l:1320,t:['COD']},
+    {id:18,b:'Baryo Denim',n:'Denim overshirt, dark wash',p:2190,w:0,c:'#3d5a80',s:'jacket',cat:'women',d:0,l:1210,t:['Free ship']}
+  ];
+  const SALE=[
+    {id:21,b:'Bagyo Co.',n:'Storm parka, navy',p:2990,w:5990,c:'#1e2a4a',s:'jacket',t:['COD']},
+    {id:22,b:'Lakbay',n:'Runner "Mayon", lava red',p:2490,w:4990,c:'#c0392b',s:'sneaker',t:['Free ship']},
+    {id:23,b:'Kalye Supply',n:'Logo hoodie, sand',p:990,w:1990,c:'#cbb897',s:'hoodie',t:['COD']},
+    {id:24,b:'Mahal',n:'Wrap midi dress, teal',p:1190,w:2790,c:'#1f7a7a',s:'dress',t:['GCash 5%']},
+    {id:25,b:'Baryo Denim',n:'Carpenter pants, black',p:1290,w:2590,c:'#232323',s:'pants',t:['COD']},
+    {id:26,b:'Sinag',n:'Oval sunglasses, smoke',p:390,w:990,c:'#2b2b2b',s:'shades',t:['Free ship']}
+  ];
+  const NEW=[
+    {id:31,b:'Habi Studio',n:'Inabel crossbody, rust',p:1450,w:0,c:'#b04a2a',s:'sling',t:['New','Local']},
+    {id:32,b:'Islas',n:'Piña-blend boxy shirt, ecru',p:2490,w:0,c:'#f1ead8',s:'shirt',t:['New']},
+    {id:33,b:'Kalye Supply',n:'Pocket tee, forest',p:690,w:0,c:'#2f5d3a',s:'tee',t:['New','COD']},
+    {id:34,b:'Lakbay',n:'Water sandal "Siargao"',p:1690,w:0,c:'#111111',s:'slides',t:['New']},
+    {id:35,b:'Baryo Denim',n:'Barrel-leg jeans, raw indigo',p:2290,w:0,c:'#2c3e63',s:'pants',t:['New']},
+    {id:36,b:'Tahanan',n:'Bucket hat, mango gingham',p:790,w:0,c:'#d9a441',s:'bucket',t:['New','COD']},
+    {id:37,b:'Sinag',n:'Ribbed tank, sunset',p:490,w:0,c:'#f08a3c',s:'tank',t:['New']},
+    {id:38,b:'Mahal',n:'Slip dress, sage',p:1690,w:0,c:'#9fb59a',s:'dress',t:['New']},
+    {id:39,b:'Bagyo Co.',n:'Ripstop shorts, stone',p:1190,w:0,c:'#a89f91',s:'shorts',t:['New','COD']},
+    {id:40,b:'Sinag',n:'Mango butter lip balm',p:190,w:0,c:'#f5c542',s:'bottle',t:['New','Beauty']}
+  ];
+  const ALL=[...RANK,...SALE,...NEW];
+  const BRANDS=[
+    {name:'Kalye Supply',cls:'narrow',mark:'KALYE',line:'Streetwear · Quezon City',f:48200},
+    {name:'Islas',cls:'wide',mark:'ISLAS',line:'Resort & linen · Cebu',f:31500},
+    {name:'Habi Studio',cls:'serif',mark:'Habi',line:'Handloom bags · Vigan',f:12900},
+    {name:'Bagyo Co.',cls:'box',mark:'BAGYO CO.',line:'Technical outerwear · Baguio',f:27800},
+    {name:'Sinag',cls:'mono',mark:'Sinag',line:'Basics & beauty · Makati',f:55100},
+    {name:'Baryo Denim',cls:'narrow',mark:'BARYO',line:'Denim · Marikina',f:22400},
+    {name:'Lakbay',cls:'wide',mark:'LAKBAY',line:'Footwear · Davao',f:39700},
+    {name:'Mahal',cls:'serif',mark:'Mahal',line:'Dresses · Pasig',f:18300},
+    {name:'Tsinelas Club',cls:'box',mark:'TSINELAS CLUB',line:'Slides & sandals · Iloilo',f:33000},
+    {name:'Tahanan',cls:'mono',mark:'Tahanan',line:'Hats & home · Taguig',f:9600}
+  ];
+  const SNAPS=[
+    {u:'jm.laurel',city:'BGC',ago:'2h',bg:'#e9dcc7',av:'#2a2723',top:['tee','#2a2723'],bot:['pants','#6f8fb0'],sh:['sneaker','#e8e2d6'],l:1284,w:['Kalye Supply','Baryo Denim','Lakbay']},
+    {u:'trisha.dv',city:'Cebu',ago:'4h',bg:'#c9d9d1',av:'#1f5f8b',top:['tank','#efe3cf'],bot:['shorts','#b9a58a'],sh:['slides','#1f5f8b'],l:942,w:['Sinag','Islas','Tsinelas Club']},
+    {u:'kuya.rj',city:'Davao',ago:'6h',bg:'#d6cbe6',av:'#c0392b',top:['jacket','#f0c419'],bot:['pants','#232323'],sh:['sneaker','#c0392b'],l:2210,w:['Bagyo Co.','Lakbay']},
+    {u:'mika.reyes',city:'Quezon City',ago:'9h',bg:'#f2d5c4',av:'#c86b7e',top:['dress','#c86b7e'],bot:null,sh:['slides','#b47a4a'],l:1730,w:['Mahal','Tsinelas Club']},
+    {u:'paulo.s',city:'Baguio',ago:'12h',bg:'#d5dcc3',av:'#3f7a3a',top:['hoodie','#4a4a4a'],bot:['shorts','#a89f91'],sh:['sneaker','#3f7a3a'],l:611,w:['Kalye Supply','Bagyo Co.']},
+    {u:'ella.mnl',city:'Pasig',ago:'1d',bg:'#cfe0ea',av:'#2c3e63',top:['shirt','#f1ead8'],bot:['pants','#2c3e63'],sh:['slides','#111111'],l:1098,w:['Islas','Baryo Denim']}
+  ];
+  const KEYWORDS=['linen shirt','rain shell','tsinelas','wide-leg','bucket hat','inabel tote','slip dress','court sneaker'];
+
+  /* ---------- rendering ---------- */
+  const heart='<svg aria-hidden="true"><use href="#i-heart"/></svg>';
+  function delta(d){
+    if(d==='new')return '<span class="delta new">NEW</span>';
+    if(d>0)return `<span class="delta up">▲${d}</span>`;
+    if(d<0)return `<span class="delta dn">▼${-d}</span>`;
+    return '<span class="delta" aria-label="no change">–</span>';
+  }
+  function card(p,o={}){
+    const off=p.w?Math.round((1-p.p/p.w)*100):0, on=liked.has(p.id);
+    return `<article class="card" data-id="${p.id}">
+      <div class="thumb" style="color:${p.c}">
+        ${o.rank?`<span class="rank num">${o.rank}</span>`:''}
+        ${o.sale&&off?`<span class="sale-badge num">-${off}%</span>`:''}
+        <svg aria-hidden="true"><use href="#s-${p.s}"/></svg>
+        <div class="acts">
+          <button class="${on?'on':''}" data-like="${p.id}" aria-pressed="${on}" aria-label="Like ${p.n}">${heart}</button>
+          <button data-bag="${p.id}" aria-label="Add ${p.n} to bag"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </div>
+      </div>
+      <div class="brand">${p.b}${o.rank?delta(p.d):''}</div>
+      <div class="pname">${p.n}</div>
+      <div class="price num">${off?`<span class="off">${off}%</span>`:''}<span class="now">${peso(p.p)}</span>${off?`<span class="was">${peso(p.w)}</span>`:''}</div>
+      <div class="meta">${(p.t||[]).map(t=>`<span class="tag${t==='COD'?' cod':t.startsWith('GCash')?' gc':''}">${t}</span>`).join('')}${p.l?`<span class="likes num">${heart}${fmtK(p.l)}</span>`:''}</div>
+    </article>`;
+  }
+  function renderRank(cat){
+    const list=(cat==='all'?RANK.slice(0,10):RANK.filter(p=>p.cat===cat));
+    $('#rankGrid').innerHTML=list.map((p,i)=>card(p,{rank:i+1})).join('');
+  }
+  function brandCard(b){
+    const on=follows.has(b.name);
+    return `<div class="bcard"><div class="mark ${b.cls}">${b.mark}</div><div><h3>${b.name}</h3><p>${b.line}</p><p class="num">${fmtK(b.f+(on?1:0))} followers</p></div><button class="follow${on?' on':''}" data-follow="${b.name}" aria-pressed="${on}">${on?'Following':'Follow'}</button></div>`;
+  }
+  function snapCard(s){
+    const use=(sym,x,y,w,h,c)=>`<use href="#s-${sym}" x="${x}" y="${y}" width="${w}" height="${h}" style="color:${c}"/>`;
+    let fig;
+    if(!s.bot){ fig=use('dress',0,10,100,120,s.top[1])+use(s.sh[0],15,118,70,50,s.sh[1]); }
+    else{ const sh=s.bot[0]==='shorts'; fig=use(s.bot[0],5,sh?48:62,90,90,s.bot[1])+use(s.top[0],0,0,100,80,s.top[1])+use(s.sh[0],15,sh?122:138,70,50,s.sh[1]); }
+    return `<a class="snap" href="#snap"><div class="look" style="background:${s.bg}"><span class="city">${s.city}</span><svg viewBox="0 0 100 190" aria-hidden="true">${fig}</svg><span class="hearts num">${heart}${fmtK(s.l)}</span></div>
+      <div class="who"><span class="avatar" style="background:${s.av}">${s.u.slice(0,2).toUpperCase()}</span><div><b>@${s.u}</b><span>${s.city} · ${s.ago} ago</span></div></div>
+      <div class="wear">${s.w.map(x=>`<span>${x}</span>`).join('')}</div></a>`;
+  }
+  renderRank('all');
+  $('#saleRow').innerHTML=SALE.map(p=>card(p,{sale:true})).join('');
+  $('#newGrid').innerHTML=NEW.map(p=>card(p)).join('');
+  $('#brandGrid').innerHTML=BRANDS.map(brandCard).join('');
+  $('#snapRow').innerHTML=SNAPS.map(snapCard).join('');
+
+  /* ---------- toast + badges ---------- */
+  let toastT; const toastEl=$('#toast');
+  function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('show'),2200);}
+  function badges(){
+    const lc=$('#likeCount'),bc=$('#bagCount');
+    lc.textContent=liked.size;lc.hidden=!liked.size;
+    bc.textContent=bag.length;bc.hidden=!bag.length;
+  }
+  badges();
+
+  /* ---------- delegated actions ---------- */
+  document.addEventListener('click',e=>{
+    const lk=e.target.closest('[data-like]');
+    if(lk){
+      const id=+lk.dataset.like, p=ALL.find(x=>x.id===id);
+      if(liked.has(id)){liked.delete(id);toast('Removed from likes');}else{liked.add(id);toast(`Liked · ${p.n}`);}
+      store.set('liked',[...liked]);
+      $$(`[data-like="${id}"]`).forEach(b=>{b.classList.toggle('on',liked.has(id));b.setAttribute('aria-pressed',liked.has(id));});
+      badges();return;
+    }
+    const bg=e.target.closest('[data-bag]');
+    if(bg){
+      const id=+bg.dataset.bag, p=ALL.find(x=>x.id===id);
+      bag.push(id);store.set('bag',bag);badges();
+      toast(`Added to bag · ${p.n} · ${peso(p.p)}`);return;
+    }
+    const fl=e.target.closest('[data-follow]');
+    if(fl){
+      const name=fl.dataset.follow, b=BRANDS.find(x=>x.name===name);
+      if(follows.has(name)){follows.delete(name);toast(`Unfollowed ${name}`);}else{follows.add(name);toast(`Following ${name} · you'll see their drops first`);}
+      store.set('follows',[...follows]);
+      const on=follows.has(name);
+      fl.classList.toggle('on',on);fl.setAttribute('aria-pressed',on);fl.textContent=on?'Following':'Follow';
+      fl.closest('.bcard').querySelector('p.num').textContent=`${fmtK(b.f+(on?1:0))} followers`;
+      return;
+    }
+  });
+  $('#bagBtn').addEventListener('click',()=>{
+    if(!bag.length){toast('Your bag is empty · add something from the ranking');return;}
+    const total=bag.reduce((s,id)=>s+(ALL.find(x=>x.id===id)?.p||0),0);
+    toast(`Bag · ${bag.length} item${bag.length>1?'s':''} · ${peso(total)}${total>=1500?' · free shipping unlocked':''}`);
+  });
+  $('#likeBtn').addEventListener('click',()=>toast(liked.size?`${liked.size} liked item${liked.size>1?'s':''}`:'Tap the heart on any item to save it'));
+  $('#tabLikes').addEventListener('click',()=>toast(liked.size?`${liked.size} liked item${liked.size>1?'s':''}`:'No likes yet'));
+  $('#userBtn').addEventListener('click',()=>toast('Sign in with GCash, Google or email'));
+
+  /* ---------- ranking chips ---------- */
+  $('#rankChips').addEventListener('click',e=>{
+    const c=e.target.closest('.chip');if(!c)return;
+    $$('#rankChips .chip').forEach(x=>{x.classList.toggle('on',x===c);x.setAttribute('aria-selected',x===c);});
+    renderRank(c.dataset.cat);
+  });
+
+  /* ---------- search ---------- */
+  const q=$('#q'), sug=$('#sug');
+  function showSug(){
+    const v=q.value.trim().toLowerCase();
+    if(!v){
+      sug.innerHTML=`<h4>Trending now</h4><div class="kw">${KEYWORDS.map(k=>`<button type="button" data-kw="${k}">${k}</button>`).join('')}</div>`;
+    }else{
+      const hits=ALL.filter(p=>(p.b+' '+p.n).toLowerCase().includes(v)).slice(0,6);
+      sug.innerHTML=hits.length
+        ?`<h4>${hits.length} result${hits.length>1?'s':''}</h4>`+hits.map(p=>`<button type="button" class="hit" data-go="${p.id}"><i><svg style="color:${p.c}" aria-hidden="true"><use href="#s-${p.s}"/></svg></i><div><b>${p.b}</b><span>${p.n}</span></div><em class="num">${peso(p.p)}</em></button>`).join('')
+        :`<h4>No results for “${q.value.trim()}”</h4><div class="kw">${KEYWORDS.slice(0,4).map(k=>`<button type="button" data-kw="${k}">${k}</button>`).join('')}</div>`;
+    }
+    sug.hidden=false;
+  }
+  q.addEventListener('focus',showSug);q.addEventListener('input',showSug);
+  q.addEventListener('keydown',e=>{if(e.key==='Escape'){sug.hidden=true;q.blur();}});
+  sug.addEventListener('click',e=>{
+    const kw=e.target.closest('[data-kw]'); if(kw){q.value=kw.dataset.kw;showSug();q.focus();return;}
+    const go=e.target.closest('[data-go]'); if(go){
+      const id=+go.dataset.go, el=$(`.card[data-id="${id}"]`); sug.hidden=true;
+      if(el){el.scrollIntoView({block:'center'});el.style.outline='2px solid var(--accent)';el.style.outlineOffset='4px';setTimeout(()=>{el.style.outline='';el.style.outlineOffset='';},1600);}
+      else toast(`${ALL.find(x=>x.id===id).n} · in the top 100`);
+    }
+  });
+  document.addEventListener('click',e=>{if(!e.target.closest('.search'))sug.hidden=true;});
+
+  /* ---------- hero carousel ---------- */
+  const slides=$('#slides'), n=slides.children.length, dots=$('#dots'), counter=$('#counter');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let idx=0, timer;
+  dots.innerHTML=Array.from({length:n},(_,i)=>`<button class="dot${i?'':' on'}" aria-label="Go to slide ${i+1}"></button>`).join('');
+  function go(i){idx=(i+n)%n;slides.style.transform=`translateX(-${idx*100}%)`;$$('.dot',dots).forEach((d,k)=>d.classList.toggle('on',k===idx));counter.textContent=`${idx+1} / ${n}`;}
+  function play(){if(reduce)return;stop();timer=setInterval(()=>go(idx+1),5000);}
+  function stop(){clearInterval(timer);}
+  $('#next').addEventListener('click',()=>{go(idx+1);play();});
+  $('#prev').addEventListener('click',()=>{go(idx-1);play();});
+  dots.addEventListener('click',e=>{const d=e.target.closest('.dot');if(d){go($$('.dot',dots).indexOf(d));play();}});
+  const hero=$('#hero');
+  hero.addEventListener('mouseenter',stop);hero.addEventListener('mouseleave',play);
+  hero.addEventListener('focusin',stop);hero.addEventListener('focusout',play);
+  let tx=null;
+  hero.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;stop();},{passive:true});
+  hero.addEventListener('touchend',e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)go(idx+(dx<0?1:-1));tx=null;play();},{passive:true});
+  play();
+
+  /* ---------- payday countdown ---------- */
+  function nextPayday(){
+    const now=new Date(), y=now.getFullYear(), m=now.getMonth();
+    const c=[new Date(y,m,15,23,59,59),new Date(y,m+1,0,23,59,59),new Date(y,m+1,15,23,59,59)];
+    return c.find(d=>d>now);
+  }
+  const pad=v=>String(v).padStart(2,'0');
+  function tick(){
+    const ms=Math.max(0,nextPayday()-Date.now()), s=Math.floor(ms/1000);
+    $('#cdD').textContent=Math.floor(s/86400);$('#cdH').textContent=pad(Math.floor(s%86400/3600));
+    $('#cdM').textContent=pad(Math.floor(s%3600/60));$('#cdS').textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+
+  /* ---------- section tabs follow scroll ---------- */
+  const tabs=$$('#tabs .tab'), secs=['ranking','sale','brands','new','snap','magazine'].map(id=>$('#'+id));
+  let ticking=false;
+  function spy(){
+    ticking=false;
+    let cur='#top';
+    for(const s of secs){if(s.getBoundingClientRect().top<=140)cur='#'+s.id;}
+    tabs.forEach(t=>t.classList.remove('on'));
+    (tabs.find(t=>t.getAttribute('href')===cur)||tabs[0]).classList.add('on');
+  }
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(spy);}},{passive:true});
+})();
+</script>
+</body>
+</html>
