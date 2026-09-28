@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>견적 · 문의 | UIG · Fourier 공식 딜러</title>
+<meta name="description" content="Fourier 로봇 견적, 데모·시연 신청, 파트너 제휴 문의. UIG 공식 딜러가 1영업일 내 답변드립니다.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1d5cff"/><path d="M18 16v22a14 14 0 0 0 28 0V16" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="46" cy="16" r="5" fill="#19c2ff"/></svg>
+      <span><span class="brand-name">UIG</span><span class="brand-sub">Fourier Authorized Distributor · Korea</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-nav"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="site-nav" id="site-nav" aria-label="주 메뉴">
+      <a href="index.html">홈</a>
+      <a href="about.html">회사소개</a>
+      <a href="products.html">제품</a>
+      <a href="pricing.html">가격표</a>
+      <a href="support.html">고객지원</a>
+      <a href="contact.html">문의</a>
+      <a class="btn btn-primary btn-sm" href="contact.html">견적 요청</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">홈</a> › 문의</div>
+    <div class="eyebrow">Contact</div>
+    <h1>견적 · 데모 · 제휴 문의</h1>
+    <p>모델과 용도를 알려주시면 담당 엔지니어가 1영업일 내에 연락드립니다. 정식 견적서, 카탈로그, 데모 일정을 안내해 드립니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid contact-grid">
+      <div class="card">
+        <h2 style="font-size:24px">문의 양식</h2>
+        <p class="muted">* 표시는 필수 항목입니다.</p>
+        <form id="quote-form" novalidate>
+          <div class="form-grid">
+            <label class="field">문의 유형 <span class="req">*</span>
+              <select name="type" required>
+                <option value="quote">견적 문의</option>
+                <option value="demo">데모 · 시연 신청</option>
+                <option value="info">제품 · 기술 문의</option>
+                <option value="partner">파트너 · 제휴 문의</option>
+              </select>
+            </label>
+            <label class="field">관심 제품
+              <select name="product"><option value="">선택 안 함 / 상담 후 결정</option></select>
+            </label>
+            <label class="field">성함 <span class="req">*</span><input type="text" name="name" required placeholder="홍길동"></label>
+            <label class="field">기관 · 회사명 <span class="req">*</span><input type="text" name="org" required placeholder="○○대학교 로봇공학과 / ○○병원 재활의학과"></label>
+            <label class="field">이메일 <span class="req">*</span><input type="email" name="email" required placeholder="name@example.com"></label>
+            <label class="field">연락처<input type="tel" name="phone" placeholder="010-0000-0000"></label>
+            <label class="field">도입 수량<input type="text" name="qty" placeholder="예: 1대 / 2~3대"></label>
+            <label class="field">용도
+              <select name="purpose">
+                <option value="">선택</option>
+                <option>연구 · 교육</option>
+                <option>병원 · 재활</option>
+                <option>요양 · 돌봄</option>
+                <option>전시 · 안내 · 서비스</option>
+                <option>산업 PoC · R&amp;D</option>
+                <option>기타</option>
+              </select>
+            </label>
+            <label class="field full">문의 내용<textarea name="message" placeholder="희망 도입 시기, 예산 범위, 필요한 옵션(핸드, 배터리, SDK 등), 설치 장소 등을 적어주시면 더 정확한 견적을 드릴 수 있습니다."></textarea></label>
+            <label class="checkbox full"><input type="checkbox" name="agree" required> <span>문의 처리를 위한 개인정보(성함, 연락처, 이메일) 수집·이용에 동의합니다. 수집된 정보는 문의 응대 목적으로만 사용되며 처리 완료 후 파기됩니다.</span></label>
+            <div class="full"><button type="submit" class="btn btn-primary btn-lg">문의 보내기</button></div>
+          </div>
+          <div id="form-status" class="form-status hidden" role="status"></div>
+        </form>
+      </div>
+      <div>
+        <div class="card">
+          <h3>직접 연락</h3>
+          <div class="info-list mt-2">
+            <div class="info-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><strong>이메일</strong><a data-cfg="email" href="mailto:sales@uig-robotics.kr">sales@uig-robotics.kr</a></div></div>
+            <div class="info-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><strong>전화</strong><a data-cfg="phone" href="tel:+82200000000">02-000-0000</a></div></div>
+            <div class="info-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><strong>운영시간</strong><span data-cfg="hours">평일 09:00 – 18:00 (주말·공휴일 휴무)</span></div></div>
+            <div class="info-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><strong>주소</strong><span data-cfg="address">서울특별시 강남구 테헤란로 000, 0층</span></div></div>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <h3>문의 시 알려주시면 좋은 정보</h3>
+          <ul class="check-list">
+            <li>관심 모델과 에디션 (예: GR-3 표준형, N1 EDU)</li>
+            <li>용도와 설치 환경 (연구실, 병원, 전시장 등)</li>
+            <li>희망 도입 시기와 예산 범위</li>
+            <li>필요한 옵션 (추가 배터리, 핸드, SDK, 교육)</li>
+            <li>조달 방식 (직접 구매, 나라장터, 리스)</li>
+          </ul>
+        </div>
+        <div class="dealer-card mt-3">
+          <div class="seal">FOURIER<br>AUTHORIZED<br>DISTRIBUTOR</div>
+          <h3 style="font-size:20px">공식 딜러 직거래</h3>
+          <p style="margin:0">UIG는 Fourier 공식 딜러로서 제조사 공식 가격 정책과 보증 조건을 그대로 적용합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1d5cff"/><path d="M18 16v22a14 14 0 0 0 28 0V16" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="46" cy="16" r="5" fill="#19c2ff"/></svg>
+          <span><span class="brand-name">UIG</span><span class="brand-sub">Fourier Authorized Distributor · Korea</span></span>
+        </div>
+        <p>UIG는 Fourier(傅利叶) 휴머노이드·재활 로봇의 대한민국 공식 딜러로, 정품 수입·판매, 설치·교육, 국내 기술지원 및 A/S를 제공합니다.</p>
+        <p class="footer-legal">사업자등록번호 <span data-cfg="bizNo">000-00-00000</span><br>주소 <span data-cfg="address">서울특별시 강남구 테헤란로 000, 0층</span></p>
+      </div>
+      <div>
+        <h4>제품</h4>
+        <ul>
+          <li><a href="products.html?cat=humanoid">휴머노이드 로봇</a></li>
+          <li><a href="products.html?cat=component">핵심 부품 · 개발 플랫폼</a></li>
+          <li><a href="products.html?cat=rehab">재활 · 의료 로봇</a></li>
+          <li><a href="pricing.html">전체 가격표</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>회사</h4>
+        <ul>
+          <li><a href="about.html">회사소개</a></li>
+          <li><a href="about.html#dealer">공식 딜러 안내</a></li>
+          <li><a href="support.html">고객지원 · A/S</a></li>
+          <li><a href="contact.html">문의</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>문의</h4>
+        <ul>
+          <li>이메일: <a data-cfg="email" href="mailto:sales@uig-robotics.kr">sales@uig-robotics.kr</a></li>
+          <li>전화: <a data-cfg="phone" href="tel:+82200000000">02-000-0000</a></li>
+          <li>운영시간: <span data-cfg="hours">평일 09:00 – 18:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> UIG. All rights reserved.</span>
+      <span>Fourier 및 GR, N1 등 제품명은 Fourier(Shanghai Fourier Intelligence Co., Ltd.)의 상표입니다. 본 사이트의 가격은 참고용이며 정식 견적서로 확정됩니다.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
