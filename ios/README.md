@@ -33,7 +33,13 @@ DeviceActivityMonitor 가 깨어나 다시 차단
 | `App/ShieldController.swift` | 본체 + MonitorExtension |
 | `App/AuthorizationManager.swift` | 본체 |
 | `App/ParentSettingsView.swift` | 본체 |
-| `App/QuizGateView.swift` | 본체 |
+| `App/DesignSystem.swift` | 본체 — 색·카드·스탯 타일·진행률 링·마스코트 |
+| `App/QuizEngine.swift` | 본체 — 점수·콤보·스트릭·과목별 기록 |
+| `App/QuestionBank.swift` | 본체 — 문제 공급 (Questions.json 있으면 그걸 씀) |
+| `App/RootTabView.swift` | 본체 — 하단 탭 + 딥링크 수신 |
+| `App/HomeView.swift` | 본체 |
+| `App/QuizGameView.swift` | 본체 |
+| `App/StatsView.swift` | 본체 |
 | `MonitorExtension/…` | Device Activity Monitor Extension |
 | `ShieldConfigurationExtension/…` | Shield Configuration Extension |
 | `ShieldActionExtension/…` | Shield Action Extension |
@@ -88,19 +94,35 @@ Apple 승인이 필요합니다.
 는 `.close` / `.defer` / `.none` 뿐입니다. 그래서 알림을 거쳐서
 퀴즈 화면으로 보냅니다.
 
+## 화면 구성
+
+```
+RootTabView                하단 탭 + 딥링크 수신
+├── HomeView               마스코트 · 오늘 진행률 링 · 스탯 타일 · 약한 과목
+├── StatsView              과목별 기록 · 하루 목표
+└── ParentSettingsView     권한 · 차단할 앱 · 보상 시간
+
+QuizGameView(mode:)        진행 바 · 점수 · 연속 정답
+├── .practice              홈에서 그냥 푸는 판
+└── .unlockShield          차단 해제용. 다 풀면 잠금이 열린다
+```
+
+점수는 연속 정답에 따라 10 / 15 / 20 / 30 점으로 오릅니다 (`QuizEngine.points(forCombo:)`).
+하루 목표를 채우면 스트릭이 하루 올라가고, 하루를 건너뛰면 끊깁니다.
+
+마스코트(`Mascot`)는 SF Symbol 로 자리만 잡아둔 임시입니다.
+실제 아트가 나오면 Assets 에 `Mascot` 으로 넣고 `Image("Mascot")` 으로 바꾸세요.
+
 ## 본체 앱에서 이어붙일 곳
 
-```swift
-// 알림 탭 → 퀴즈 화면
-.onOpenURL { url in
-    guard url == QuizBreak.quizDeepLink else { return }
-    showQuiz = true
-}
+`RootTabView` 가 딥링크 수신과 만료 회수를 이미 들고 있으니,
+App 진입점에서 그것만 띄우면 됩니다.
 
-// 포그라운드 복귀 → 만료된 해제 거둬들이기
-.onChange(of: scenePhase) { _, phase in
-    if phase == .active {
-        ShieldController.shared.reapplyIfExpired()
+```swift
+@main
+struct QuizBreakKidsApp: App {
+    var body: some Scene {
+        WindowGroup { RootTabView() }
     }
 }
 ```
