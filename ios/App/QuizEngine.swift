@@ -26,16 +26,31 @@ public struct Subject: Identifiable, Hashable, Codable {
 public struct Question: Identifiable, Hashable, Codable {
     public let id: UUID
     public let subjectID: String
+    public let ageMin: Int
+    public let ageMax: Int
     public let prompt: String
     public let choices: [String]
     public let answerIndex: Int
 
-    public init(id: UUID = UUID(), subjectID: String, prompt: String, choices: [String], answerIndex: Int) {
+    public init(id: UUID = UUID(),
+                subjectID: String,
+                ageMin: Int = 2,
+                ageMax: Int = 17,
+                prompt: String,
+                choices: [String],
+                answerIndex: Int) {
         self.id = id
         self.subjectID = subjectID
+        self.ageMin = ageMin
+        self.ageMax = ageMax
         self.prompt = prompt
         self.choices = choices
         self.answerIndex = answerIndex
+    }
+
+    /// 이 문제가 해당 연령대와 겹치는가.
+    public func fits(_ group: AgeGroup) -> Bool {
+        ageMin <= group.range.upperBound && ageMax >= group.range.lowerBound
     }
 }
 

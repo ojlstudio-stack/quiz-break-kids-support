@@ -4,7 +4,6 @@ import SwiftUI
 public struct HomeView: View {
 
     @ObservedObject private var engine = QuizEngine.shared
-    @State private var showQuiz = false
 
     public init() {}
 
@@ -20,9 +19,6 @@ public struct HomeView: View {
             .padding(.horizontal, Metric.gutter)
         }
         .background(Palette.canvas.ignoresSafeArea())
-        .fullScreenCover(isPresented: $showQuiz) {
-            QuizGameView(mode: .practice)
-        }
     }
 
     // MARK: 줄별
@@ -65,19 +61,27 @@ public struct HomeView: View {
                         .frame(width: 92, height: 92)
                 }
 
-                Button {
-                    startPractice()
-                } label: {
-                    Text(engine.goalReached ? "더 풀어보기" : "퀴즈 풀기")
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 15)
-                        .background(Palette.brand)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                }
+                statusLine
             }
         }
+    }
+
+    /// 지금 감시가 돌고 있는지 한 줄로. 누르는 버튼은 두지 않는다 —
+    /// 퀴즈는 아이가 찾아가는 게 아니라 정해진 사용 시간이 차면 찾아온다.
+    private var statusLine: some View {
+        HStack(spacing: 8) {
+            Image(systemName: SharedStore.scheduleEnabled ? "checkmark.circle.fill" : "pause.circle.fill")
+                .foregroundStyle(SharedStore.scheduleEnabled ? Palette.correct : Palette.inkSoft)
+
+            Text(SharedStore.scheduleEnabled
+                 ? "\(SharedStore.intervalMinutes)분마다 퀴즈가 찾아갑니다"
+                 : "잠금 탭에서 실행을 눌러 주세요")
+                .font(.system(size: 13, weight: .medium))
+                .foregroundStyle(Palette.inkSoft)
+
+            Spacer()
+        }
+        .padding(.top, 2)
     }
 
     private var statRow: some View {
@@ -157,8 +161,4 @@ public struct HomeView: View {
         }
     }
 
-    private func startPractice() {
-        engine.start(questions: QuestionBank.shared.draw(count: 5))
-        showQuiz = true
-    }
 }

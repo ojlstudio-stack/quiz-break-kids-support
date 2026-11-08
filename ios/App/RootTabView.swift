@@ -35,7 +35,7 @@ public struct RootTabView: View {
             if SharedStore.quizPending { startUnlockQuiz() }
         }
         .fullScreenCover(isPresented: $showUnlockQuiz) {
-            QuizGameView(mode: .unlockShield)
+            QuizGameView()
         }
     }
 
