@@ -24,7 +24,7 @@
   --radius-sm: 10px;
   --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.06);
-  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  --font: "Noto Sans KR", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
   --container: 1200px;
 }
 

@@ -231,9 +231,11 @@
       var b = e.target.closest('.chip-btn');
       if (!b) return;
       state.cat = b.getAttribute('data-cat');
-      var url = new URL(location.href);
-      if (state.cat === 'all') url.searchParams.delete('cat'); else url.searchParams.set('cat', state.cat);
-      history.replaceState(null, '', url);
+      try {
+        var url = new URL(location.href);
+        if (state.cat === 'all') url.searchParams.delete('cat'); else url.searchParams.set('cat', state.cat);
+        history.replaceState(null, '', url);
+      } catch (err) { /* 샌드박스 iframe 등 주소 변경이 막힌 환경에서는 무시 */ }
       render();
     });
     if (search) search.addEventListener('input', function () { state.q = search.value; render(); });
